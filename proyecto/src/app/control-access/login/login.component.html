@@ -1,29 +1,5 @@
-<div class="container">
-    <div class="row text-center login-page">
-        <div class="col-md-12 login-form">
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-12 login-form-header">
-                        <p class="login-form-font-header">Rent<span>Car</span>
-                            <p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 login-from-row">
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 login-from-row">
-                        <input type="password" placeholder="Contraseña" required/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 login-from-row">
-                        <button type="submit" (click)="login()" class="btn btn-dark">Entrar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<form>
+    <input id="email" name="email" type="email" [(ngModel)]="email" placeholder="Email..." />
+    <input id="password" name="password" type="password" [(ngModel)]="password" placeholder="Password..." />
+    <button (click)="login()">Enviar</button>
+</form>

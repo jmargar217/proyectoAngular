@@ -7,7 +7,8 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule} from '@angular/common/http'
 import { AuthGuard } from './auth.guard';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
 
   ],
-  providers: [],
-  bootstrap: [AppComponent, AuthGuard]
+  providers: [AuthGuard],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

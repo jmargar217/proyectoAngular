@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { CochesComponent } from './coches/coches/coches.component';
@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component:HomeComponent},
   { path: 'home', component:HomeComponent},
 
-  { path:'login',component:LoginComponent},
+  { path: 'login',component:LoginComponent},
   { path: 'registro',component:RegistroComponent},
 
   { path:'coches',component:CochesComponent, canActivate:[AuthGuard]},
@@ -20,6 +20,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'home'
   }
+
 
 ];
 

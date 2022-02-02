@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { AccessService } from '../access.service';
 
 @Component({
   selector: 'app-login',
@@ -12,30 +9,14 @@ export class LoginComponent implements OnInit {
 
   email!:string;
   password!:string;
-
-  constructor(private accesoService:AccessService,private router: Router, ) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   login(){
-    console.log("hola");
+    alert(this.email);
 
-    /*
-    this.accesoService.login(this.email,this.password)
-    .subscribe({
-      next: (resp =>{
-        localStorage.setItem('token',resp.access_token!)
-        this.router.navigateByUrl('/coches');
-
-    }),
-      error: resp =>{
-        console.log(resp);
-        Swal.fire('Error', resp.error.message, 'error')
-    }
-    });
-    */
   }
-
 
 }
