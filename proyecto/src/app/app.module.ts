@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './shared/menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule} from '@angular/common/http'
+import { AuthGuard } from './auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,13 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, AuthGuard]
 })
 export class AppModule { }
