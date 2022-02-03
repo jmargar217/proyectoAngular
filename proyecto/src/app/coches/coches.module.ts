@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CochesComponent } from './coches/coches.component';
-import { CocheComponent } from './coche/coche.component';
-
+import { AlquilerComponent } from './alquiler/alquiler.component';
+import { DataTablesModule } from 'angular-datatables';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
   declarations: [
     CochesComponent,
-    CocheComponent
+    AlquilerComponent
+  ],
+  exports:[
+    CochesComponent,
+    AlquilerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DataTablesModule
+
   ]
 })
 export class CochesModule { }

@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ControlRoutingModule } from './control-access.routing.module';
 
 
 @NgModule({
   declarations: [
-    RegistroComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ControlRoutingModule
 
   ],
   exports:[
-    RegistroComponent,
     LoginComponent
   ]
 

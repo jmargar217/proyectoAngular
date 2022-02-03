@@ -1,1 +1,22 @@
-<p>coches works!</p>
+<div class="table-responsive" style="margin-top:50px">
+    <table class="table" datatable [dtOptions]="dtOptions" class="row-border hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coche of coches">
+                <td>{{coche.id}}</td>
+                <td>{{coche.marca}}</td>
+                <td>{{coche.modelo}}</td>
+                <td>{{coche.year}}</td>
+                <td><a href="#">Alquilar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

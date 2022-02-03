@@ -8,7 +8,7 @@ import { AuthResponse } from '../interfaces/interface';
 @Injectable({
   providedIn: 'root'
 })
-export class AccessService {
+export class LoginService {
   private baseUrl: string = environment.baseUrl;
   constructor(private http:HttpClient) { }
 
