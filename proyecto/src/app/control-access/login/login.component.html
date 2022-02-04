@@ -5,21 +5,30 @@
                 <div class="text-center">
                     <h3 class="text-primary">Login</h3>
                 </div>
-                <form>
+                <form (ngSubmit)="login()" autocomplete="off" #formulario="ngForm">
                     <div class="p-4">
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-primary"><i
                               class="bi bi-person-plus-fill text-white"></i></span>
-                            <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control" placeholder="Email">
+                            <input type="email" id="email" name="email" [(ngModel)]="usuario.email" class="form-control" placeholder="Email" required>
+                            <span class="input-group "></span>
+                            <span class="form-text text-danger" *ngIf="formulario.controls[ 'email']?.errors && formulario.controls[ 'email']?.touched">
+                                Debe introducir un correo electrónico
+                              </span>
                         </div>
+
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-primary"><i
                               class="bi bi-key-fill text-white"></i></span>
-                            <input id="password" type="password" name="password" [(ngModel)]="password" class="form-control" placeholder="Password">
+                            <input id="password" type="password" name="password" [(ngModel)]="usuario.password" class="form-control" placeholder="Password" required minlength="5">
+                            <span class="form-text text-danger" *ngIf="formulario.controls[ 'password']?.errors && formulario.controls[ 'password']?.touched">
+                              La contraseña debe tener más de 4 carácteres
+                              </span>
                         </div>
-                        <button (click)="login()" class="btn btn-primary text-center mt-2">
-                      Login
-                  </button>
+
+                        <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary text-center mt-2">
+                            Login
+                        </button>
                     </div>
                 </form>
             </div>

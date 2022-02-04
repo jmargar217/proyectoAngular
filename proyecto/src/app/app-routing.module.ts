@@ -8,13 +8,10 @@ const routes: Routes = [
 
   { path: '', component:HomeComponent},
 
-  { path: 'login',
+  { path: 'control',
     loadChildren: () => import('./control-access/control-access.module').then(m => m.ControlAccessModule)
   },
 
-  { path: 'registro',
-    loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
-  },
   { path: 'ubicacion',
     loadChildren: () => import('./ubicacion/ubicacion.module').then(m => m.UbicacionModule)
   },
