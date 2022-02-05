@@ -4,6 +4,7 @@ import { CochesComponent } from './coches/coches.component';
 import { AlquilerComponent } from './alquiler/alquiler.component';
 import { DataTablesModule } from 'angular-datatables';
 import {MatTableModule} from '@angular/material/table';
+import { CochesRoutingModule } from './coches-routing.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatTableModule} from '@angular/material/table';
   ],
   imports: [
     CommonModule,
-    DataTablesModule
+    DataTablesModule,
+    CochesRoutingModule
 
   ]
 })

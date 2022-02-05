@@ -13,6 +13,7 @@ import { LoginService } from './services/login.service';
 import { CochesService } from './services/coches.service';
 import { CochesModule } from './coches/coches.module';
 import { UbicacionModule } from './ubicacion/ubicacion.module';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { UbicacionModule } from './ubicacion/ubicacion.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    HomeModule,
     ControlAccessModule,
     CochesModule,
     UbicacionModule

@@ -15,8 +15,10 @@
                 <td>{{coche.marca}}</td>
                 <td>{{coche.modelo}}</td>
                 <td>{{coche.year}}</td>
-                <td><a href="#">Alquilar</a></td>
+                <td><a [routerLink]="['/alquiler',coche.id]">Alquilar</a></td>
             </tr>
         </tbody>
     </table>
+
 </div>
+<router-outlet></router-outlet>
