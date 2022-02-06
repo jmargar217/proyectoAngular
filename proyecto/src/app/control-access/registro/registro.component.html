@@ -1,1 +1,45 @@
-<p>registro works!</p>
+<div class="container-fluid vh-100">
+    <div class="" style="margin-top:50px">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">Registro</h3>
+                </div>
+                <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="formulario">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" type="text" class="form-control" formControlName="nombre">
+                        <span class="form-text text-danger" *ngIf="campoEsValido('nombre')">
+                      Debe escribir las iniciales en mayúsculas
+                    </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input class="form-control" type="text" class="form-control" formControlName="apellidos">
+                        <span class="form-text text-danger" *ngIf="campoEsValido('apellidos')">
+                          Debe escribir las iniciales en mayúsculas
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" type="email" class="form-control" formControlName="email">
+                        <span class="form-text text-danger" *ngIf="campoEsValido('email')">
+                          Debe introducir un email
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input class="form-control" type="password" class="form-control" formControlName="password">
+                        <span class="form-text text-danger" *ngIf="campoEsValido('password')">
+                            La contraseña debe tener 5 carácteres como mínimo
+                        </span>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="formulario.invalid">
+                      Registrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

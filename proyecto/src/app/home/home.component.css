@@ -1,10 +1,10 @@
 .img-container {
-    width: 65%;
+    width: 70%;
     height: 100%;
     overflow: hidden;
 }
 
 .img-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }

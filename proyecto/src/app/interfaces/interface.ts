@@ -8,6 +8,13 @@ export interface Usuario{
   password:string;
 }
 
+export interface UsuarioRegister{
+  email:string;
+  password:string;
+  nombre:string;
+  apellidos:string;
+}
+
 export interface ErrorResponse{
   status: number;
   message: string;

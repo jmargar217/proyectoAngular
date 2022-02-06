@@ -1,10 +1,10 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
-          <span class="navbar-togler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand">
-            <img src="http://blog.certifiedfirst.es/wp-content/uploads/2016/01/mustang4.jpg" alt="" height="60px">
+            <img src="../../../assets/frente-del-coche-sedan.png" alt="" height="60px">
         </a>
 
         <div class="collapse navbar-collapse" id="menu">
@@ -19,13 +19,13 @@
                     </ul>
                 </div>
                 <li class="nav-item active">
-                    <a class="nav-link" routerLinkActive="active" routerLink="">Home</a>
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="">Home</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" routerLinkActive="active" routerLink="/coches">Lista Coches</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/listaReservas">Mis Reservas</a>
+                    <a class="nav-link" routerLinkActive="active" routerLink="/listaAlquiler">Mis Alquileres</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" routerLinkActive="active" routerLink="/ubicacion">Ubicación</a>
@@ -33,4 +33,27 @@
             </ul>
         </div>
     </nav>
+</div>
+
+<div class="sticky-container">
+    <ul class="sticky">
+        <li>
+            <img src="../../../assets/facebook.png" width="32" height="32">
+            <p>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            </p>
+        </li>
+        <li>
+            <img src="../../../assets/twitter.png" width="32" height="32">
+            <p>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+            </p>
+        </li>
+        <li>
+            <img src="../../../assets/youtube.png" width="32" height="32">
+            <p>
+                <a href="http://www.youtube.com" target="_blank">Youtube</a>
+            </p>
+        </li>
+    </ul>
 </div>

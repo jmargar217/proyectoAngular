@@ -14,6 +14,7 @@ import { CochesService } from './services/coches.service';
 import { CochesModule } from './coches/coches.module';
 import { UbicacionModule } from './ubicacion/ubicacion.module';
 import { HomeModule } from './home/home.module';
+import { AlquileresModule } from './alquileres/alquileres.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HomeModule } from './home/home.module';
     HomeModule,
     ControlAccessModule,
     CochesModule,
-    UbicacionModule
+    UbicacionModule,
+    AlquileresModule
   ],
   providers: [AuthGuard, LoginService, CochesService],
   bootstrap: [AppComponent]

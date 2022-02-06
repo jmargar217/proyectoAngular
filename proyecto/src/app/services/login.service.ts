@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AuthResponse } from '../interfaces/interface';
+import { AuthResponse, UsuarioRegister } from '../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,12 @@ export class LoginService {
     }
 
     return this.http.post<AuthResponse>(url,body);
+  }
+
+  registrar(usuario:UsuarioRegister){
+    const url = `${this.baseUrl}/users`;
+    return this.http.post(url,usuario);
+
   }
 
   validarToken():Observable<AuthResponse>{
