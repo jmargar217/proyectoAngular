@@ -30,8 +30,7 @@ export class AuthGuard implements CanActivate {
               icon: 'error',
               confirmButtonText: 'Ok'
             })
-
-            this.router.navigateByUrl('/auth/login');
+            this.router.navigateByUrl('/login');
             return of(false)
         })
       )

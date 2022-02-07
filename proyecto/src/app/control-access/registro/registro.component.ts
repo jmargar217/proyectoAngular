@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class RegistroComponent implements OnInit {
     apellidos:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]]
   });
 
-  constructor(private fb: FormBuilder,private serviceLogin:LoginService) { }
+  constructor(private fb: FormBuilder,private serviceLogin:LoginService, private router:Router) { }
 
   ngOnInit(): void {
     this.formulario.reset({
@@ -33,9 +34,13 @@ export class RegistroComponent implements OnInit {
 
   guardar(){
     const user = this.formulario.value;
-    this.serviceLogin.registrar(user).subscribe(resp =>{
-
-      console.log(resp);
+    this.serviceLogin.registrar(user).
+    subscribe({
+      next: (resp=>{
+        console.log(resp);
+        localStorage.setItem('token',resp.access_token!)
+        this.router.navigateByUrl('coches');
+      }),
     });
   }
 
