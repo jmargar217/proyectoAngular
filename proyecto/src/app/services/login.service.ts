@@ -25,7 +25,7 @@ export class LoginService {
   }
 
   registrar(usuario:UsuarioRegister){
-    const url = `${this.baseUrl}/users`;
+    const url = `${this.baseUrl}/auth/register`;
     return this.http.post(url,usuario);
 
   }
