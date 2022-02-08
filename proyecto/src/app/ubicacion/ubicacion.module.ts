@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { UbicacionRoutingModule } from './ubicacion-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,7 @@ import { UbicacionRoutingModule } from './ubicacion-routing.module';
   exports:[UbicacionComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     UbicacionRoutingModule
   ]
 })
