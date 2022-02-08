@@ -26,7 +26,12 @@ export class LoginService {
 
   registrar(usuario:UsuarioRegister){
     const url = `${this.baseUrl}/auth/register`;
-    return this.http.post<AuthResponse>(url,usuario);
+
+    const opcionHeader = new HttpHeaders();
+    opcionHeader.append('Access-Control-Allow-Origin','*');
+
+
+    return this.http.post<AuthResponse>(url,usuario,{headers:opcionHeader});
 
   }
 

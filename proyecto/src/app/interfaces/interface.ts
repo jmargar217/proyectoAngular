@@ -9,8 +9,8 @@ export interface Usuario{
 }
 
 export interface UsuarioRegister{
-  email:string;
-  password:string;
+    email:string;
+    password:string;
   nombre:string;
   apellidos:string;
 }
