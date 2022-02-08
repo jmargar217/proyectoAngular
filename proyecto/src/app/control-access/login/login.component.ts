@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.serviceLogin.login(this.usuario.email,this.usuario.password)
     .subscribe({
       next: (resp =>{
+        console.log(resp)
         localStorage.setItem('token',resp.access_token!)
         this.router.navigateByUrl('coches');
       }),

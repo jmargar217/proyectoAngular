@@ -25,7 +25,9 @@ export interface Coche{
   marca:string,
   modelo:string,
   year:number,
-  status:string,
-  precioFijo:number
+  precioFijo:number,
+  imagen:string,
+  status:boolean
+
 
 }
