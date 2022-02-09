@@ -11,8 +11,9 @@ export interface Usuario{
 export interface UsuarioRegister{
     email:string;
     password:string;
-  nombre:string;
-  apellidos:string;
+    nombre:string;
+    apellidos:string;
+    rol:string
 }
 
 export interface ErrorResponse{

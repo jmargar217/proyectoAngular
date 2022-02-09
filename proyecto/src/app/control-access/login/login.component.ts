@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
     this.serviceLogin.login(this.usuario.email,this.usuario.password)
     .subscribe({
       next: (resp =>{
-        console.log(resp)
         localStorage.setItem('token',resp.access_token!)
+
+        this.serviceLogin.getUsuario();
         this.router.navigateByUrl('coches');
       }),
       error: resp =>{
-        console.log(resp);
         Swal.fire({
           title: 'Sus datos no son correctos',
           text: 'Vuelva a intentarlo',
@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
           confirmButtonText: 'Ok'
         })
       }
-
     })
 
 

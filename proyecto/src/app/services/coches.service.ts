@@ -12,8 +12,6 @@ export class CochesService {
   constructor(private http:HttpClient) { }
 
   getCoches(){
-    //Cuando se haga la API no sera necesario pasar el token para obtener los coches
-
     let token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

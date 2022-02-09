@@ -20,8 +20,27 @@ export class LoginService {
       'email': email,
       'password': password
     }
+    const opcionHeader = new HttpHeaders();
+    opcionHeader.append('Access-Control-Allow-Origin','*');
 
-    return this.http.post<AuthResponse>(url,body);
+    return this.http.post<AuthResponse>(url,body,{headers:opcionHeader});
+  }
+
+  getUsuario(){
+    const url = `${this.baseUrl}/user`;
+
+    let token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    const options = {
+      headers: headers
+    }
+    this.http.get(url,options)
+      .subscribe(resp =>{
+        localStorage.setItem("idUser",String(resp));
+      });
   }
 
   registrar(usuario:UsuarioRegister){

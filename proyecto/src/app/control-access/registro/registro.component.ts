@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
+import { UsuarioRegister } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-registro',
@@ -33,14 +35,25 @@ export class RegistroComponent implements OnInit {
   }
 
   guardar(){
+
     const user = this.formulario.value;
     this.serviceLogin.registrar(user).
     subscribe({
       next: (resp=>{
         console.log(resp);
         localStorage.setItem('token',resp.access_token!)
+
+        this.serviceLogin.getUsuario();
         this.router.navigateByUrl('coches');
       }),
+      error: resp =>{
+        Swal.fire({
+          title: 'Ya se encuentra el email registrado',
+          text: 'Debe indicar un email no registrado',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
     });
   }
 
