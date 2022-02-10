@@ -32,3 +32,16 @@ export interface Coche{
 
 
 }
+
+export interface Accesorio{
+  id:number,
+  nombre:string,
+  precio:number
+}
+
+export interface Alquiler{
+  numDias:number,
+  coche:Coche,
+  accesorios:Accesorio[]
+
+}

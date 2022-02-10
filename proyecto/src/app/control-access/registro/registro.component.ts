@@ -40,7 +40,6 @@ export class RegistroComponent implements OnInit {
     this.serviceLogin.registrar(user).
     subscribe({
       next: (resp=>{
-        console.log(resp);
         localStorage.setItem('token',resp.access_token!)
 
         this.serviceLogin.getUsuario();

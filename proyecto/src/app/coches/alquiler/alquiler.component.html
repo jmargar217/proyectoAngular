@@ -1,1 +1,20 @@
-<p>alquiler works!</p>
+<div *ngIf="mostrar" align="center">
+    <div class="row">
+        <div class="col">
+            <p>ID: {{coche.id}}</p>
+            <p>Marca: {{coche.marca}}</p>
+            <p>Modelo: {{coche.modelo}}</p>
+            <p>Año: {{coche.year}}</p>
+            <p>Precio fijo: {{coche.precioFijo}}</p>
+            <p>Status: {{coche.status}}</p>
+
+            <br><br><br> Accesorios:
+            <p *ngFor="let accesorio of accesorios">
+                Nombre: {{accesorio.nombre}} Precio: {{accesorio.precio}}
+            </p>
+        </div>
+        <div class="col">
+            <img src="{{coche.imagen}}" alt="imagen del coche elegido">
+        </div>
+    </div>
+</div>

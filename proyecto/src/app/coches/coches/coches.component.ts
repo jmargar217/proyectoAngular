@@ -28,14 +28,9 @@ export class CochesComponent implements OnInit {
    * Obtiene la lista de coches a través del servicio
    */
   getCoches(){
-
-    // *Cambiar cuando creemos la API (comprobarlo en backend)
     this.serviceCoches.getCoches().subscribe(resp =>{
-      for(let i=0; i<resp.length;i++){
-        if(resp[i].status){
-          this.coches.push(resp[i]);
-        }
-      }
+      this.coches = resp;
+
     })
   }
 }

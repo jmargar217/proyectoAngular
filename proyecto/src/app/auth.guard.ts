@@ -18,12 +18,10 @@ export class AuthGuard implements CanActivate {
     return this.servicio.validarToken()
     .pipe(
         map( resp => {
-          console.log(resp);
 
           return true
         }),
         catchError( err => {
-          console.log(err.message);
             Swal.fire({
               title: 'Su token ha expirado',
               text: 'Inicie sesión',
