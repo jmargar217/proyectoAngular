@@ -4,6 +4,7 @@ import { CochesComponent } from './coches/coches.component';
 import { AlquilerComponent } from './alquiler/alquiler.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CochesRoutingModule } from './coches-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CochesRoutingModule } from './coches-routing.module';
   imports: [
     CommonModule,
     DataTablesModule,
-    CochesRoutingModule
+    CochesRoutingModule,
+    ReactiveFormsModule
 
   ]
 })
