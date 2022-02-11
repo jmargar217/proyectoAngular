@@ -13,13 +13,16 @@ export class AlquilerComponent implements OnInit {
   coche!:Coche;
   accesorios:Accesorio[] = [];
 
+
+  //Todos los números de tarjeta Visa comienzan con el número 4.
+  //Las tarjetas nuevas tienen 16 dígitos. Las tarjetas viejas tienen 13.
+
   formulario: FormGroup = this.fb.group({
-    numDias:[0, [Validators.required]],
-    tarjeta:['',[Validators.minLength(5),Validators.required]],
-    accesorios:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]]
+    numDias:[, [Validators.required, Validators.minLength(1),Validators.pattern(/^([1-9]\d*(\.\d*[1-9][0-9])?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$/)]],
+    tarjeta:['',[Validators.required,Validators.pattern('^4[0-9]{12}(?:[0-9]{3})?$')]], //Visa (16 dígitos empieza por 4 )
+    accesorios:['',[Validators.required]]
 
   });
-
 
   mostrar:boolean = false;
   constructor(private rutaActiva: ActivatedRoute,

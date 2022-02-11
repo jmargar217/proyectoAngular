@@ -18,8 +18,8 @@
                 <label>Número de días</label>
                 <input class="form-control" type="number" class="form-control" formControlName="numDias">
                 <span class="form-text text-danger" *ngIf="campoEsValido('numDias')">
-              Debe indicar un número mayor que 0
-            </span>
+                  Debe indicar un número mayor que 0
+                </span>
             </div>
             <div class="form-group">
                 <label>Tarjeta de Crédito</label>
@@ -27,16 +27,14 @@
                 <span class="form-text text-danger" *ngIf="campoEsValido('tarjeta')">
                   Debe indicar una tarjeta de crédito válida
                 </span>
-            </div>
-            <label>Accesorios</label><br>
+            </div><br>
+            <h3 class="text-primary">Accesorios</h3><br>
             <div class="form-group" *ngFor="let accesorio of accesorios">
-                <label >
-                  {{accesorio.nombre}}<input  type="checkbox"    class="form-control" formControlName="accesorios">
-                </label>
-                <label><input type="checkbox" class="form-control"> {{accesorio.nombre}}</label><br>
+                <input  type="checkbox" class="form-control" formControlName="accesorios">
+                {{accesorio.nombre}}
             </div>
             <br>
-              <button type="submit" class="btn btn-primary float-end" [disabled]="formulario.invalid">
+              <button type="submit" class="btn btn-primary center" [disabled]="formulario.invalid">
                 Registrar
               </button>
         </form>
