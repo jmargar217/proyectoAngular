@@ -39,17 +39,14 @@ export class LoginService {
     }
     this.http.get(url,options)
       .subscribe(resp =>{
-        localStorage.setItem("idUser",String(resp));
+        localStorage.setItem("idUser",JSON.stringify(resp));
       });
   }
 
   registrar(usuario:UsuarioRegister){
     const url = `${this.baseUrl}/auth/register`;
-
     const opcionHeader = new HttpHeaders();
     opcionHeader.append('Access-Control-Allow-Origin','*');
-
-
     return this.http.post<AuthResponse>(url,usuario,{headers:opcionHeader});
 
   }

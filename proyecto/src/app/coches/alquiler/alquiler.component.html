@@ -1,42 +1,46 @@
-
-      <div class="row">
-        <div class="col-7">
-          <div class="card sinpadding">
+<div class="row" *ngIf="mostrar">
+    <div class="col-7">
+        <div class="card sinpadding">
             <img class="card-img-top" src="{{coche.imagen}}" alt="Imagen de coche">
             <div class="card-body">
-              <h5 class="card-title">{{coche.marca}} {{coche.modelo}} {{coche.year}}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Motor: {{coche.motor}}</h6>
-              <h6 class="card-subtitle mb-2 text-muted">Precio: {{coche.precioFijo}} €/día </h6>
+                <h5 class="card-title">{{coche.marca}} {{coche.modelo}} {{coche.year}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Motor: {{coche.motor}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Precio: {{coche.precioFijo}} €/día </h6>
 
             </div>
-          </div>
         </div>
-        <div class="col-5" >
-          <form (ngSubmit)="crearAlquiler()" autocomplete="off" [formGroup]="formulario">
-            <h3 class="text-primary">Alquiler</h3><br>
-            <div class="form-group">
-                <label>Número de días</label>
-                <input class="form-control" type="number" class="form-control" formControlName="numDias">
-                <span class="form-text text-danger" *ngIf="campoEsValido('numDias')">
-                  Debe indicar un número mayor que 0
+    </div>
+    <div class="col-5">
+        <form (ngSubmit)="crearAlquiler()" autocomplete="off" #formulario="ngForm">
+            <div class="p-4">
+                <h3 class="text-primary">Alquiler</h3>
+                <div class="form-group">
+                    <label for="numDias">Número de días</label>
+                    <input type="number" id="numDias" name="numDias" [(ngModel)]="alquiler.numDias" class="form-control" required pattern="^([1-9]\d*(\.\d*[1-9][0-9])?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$">
+                    <span class="input-group "></span>
+                    <span class="form-text text-danger" *ngIf="formulario.controls['numDias']?.errors && formulario.controls['numDias']?.touched">
+                    Debe indicar un número mayor que 0
+                  </span>
+                </div>
+                <div class="form-group">
+                    <label for="numDias">Número de tarjeta</label>
+                    <input type="text" id="tarjeta" name="tarjeta" [(ngModel)]="alquiler.tarjeta" class="form-control" required pattern="^4[0-9]{12}(?:[0-9]{3})?$">
+                    <span class="input-group "></span>
+                    <span class="form-text text-danger" *ngIf="formulario.controls['tarjeta']?.errors && formulario.controls['tarjeta']?.touched">
+                    Debe indicar un número de tarjeta valido
                 </span>
+                </div><br>
+                <h5 class="text-primary">Accesorios</h5>
+                <div class="form-group" *ngFor="let accesorio of accesorios">
+                    <div class="row">
+                        <div class="col"> {{accesorio.nombre}} ({{accesorio.precio}}€)</div>
+                        <div class="col"><input type="checkbox" name="accesorio" [(ngModel)]="accesorio.checked" class="form-check"></div>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary text-center mt-2">
+                Login
+            </button>
             </div>
-            <div class="form-group">
-                <label>Tarjeta de Crédito</label>
-                <input class="form-control" type="text" class="form-control" formControlName="tarjeta">
-                <span class="form-text text-danger" *ngIf="campoEsValido('tarjeta')">
-                  Debe indicar una tarjeta de crédito válida
-                </span>
-            </div><br>
-            <h3 class="text-primary">Accesorios</h3><br>
-            <div class="form-group" *ngFor="let accesorio of accesorios">
-                <input  type="checkbox" class="form-control" formControlName="accesorios">
-                {{accesorio.nombre}}
-            </div>
-            <br>
-              <button type="submit" class="btn btn-primary center" [disabled]="formulario.invalid">
-                Registrar
-              </button>
         </form>
-        </div>
-      </div>
+    </div>
+</div>

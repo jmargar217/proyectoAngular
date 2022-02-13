@@ -30,19 +30,27 @@ export interface Coche{
   precioFijo:number,
   imagen:string,
   status:boolean
-
-
 }
 
 export interface Accesorio{
   id:number,
   nombre:string,
-  precio:number
+  precio:number,
+  checked:boolean
 }
 
 export interface Alquiler{
+  id:number,
   numDias:number,
   coche:Coche,
+  accesorios:Accesorio[]
+
+}
+
+export interface AlquilerDTO{
+  idUser:string,
+  coche:number,
+  numDias:number,
   accesorios:Accesorio[]
 
 }

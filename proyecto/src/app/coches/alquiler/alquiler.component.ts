@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Accesorio, Coche } from 'src/app/interfaces/interface';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Accesorio, AlquilerDTO, Coche } from 'src/app/interfaces/interface';
+import { AlquilerService } from 'src/app/services/alquiler.service';
 import { CochesService } from 'src/app/services/coches.service';
 
 @Component({
@@ -13,27 +14,30 @@ export class AlquilerComponent implements OnInit {
   coche!:Coche;
   accesorios:Accesorio[] = [];
 
-
   //Todos los números de tarjeta Visa comienzan con el número 4.
   //Las tarjetas nuevas tienen 16 dígitos. Las tarjetas viejas tienen 13.
 
   formulario: FormGroup = this.fb.group({
-    numDias:[, [Validators.required, Validators.minLength(1),Validators.pattern(/^([1-9]\d*(\.\d*[1-9][0-9])?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$/)]],
-    tarjeta:['',[Validators.required,Validators.pattern('^4[0-9]{12}(?:[0-9]{3})?$')]], //Visa (16 dígitos empieza por 4 )
-    accesorios:['',[Validators.required]]
-
+    numDias:[, ],
+    tarjeta:['']
   });
+
+  alquiler={
+    numDias:0,
+    tarjeta:'',
+  }
 
   mostrar:boolean = false;
   constructor(private rutaActiva: ActivatedRoute,
     private servicioCoche:CochesService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private servicioAlquiler:AlquilerService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.formulario.reset({
       numDias:0,
       tarjeta:'',
-      accesorios:''
     })
     this.getCoche();
     this.getAccesorios();
@@ -53,13 +57,16 @@ export class AlquilerComponent implements OnInit {
     })
   }
 
-  campoEsValido( campo: string ) {
-    return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
-  }
-
   crearAlquiler(){
-
-
+    let accesoriosChecked:Accesorio[] = this.servicioAlquiler.accesoriosMarcados(this.accesorios)
+    let alquiler:AlquilerDTO = {
+      idUser: localStorage.getItem("idUser")!,
+      coche:this.coche.id,
+      numDias:this.alquiler.numDias,
+      accesorios:accesoriosChecked
+    }
+    this.servicioAlquiler.crearAlquiler(alquiler).subscribe(resp=>{
+      this.router.navigateByUrl('listaAlquiler');
+    });
   }
-
 }
