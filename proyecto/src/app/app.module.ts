@@ -15,14 +15,18 @@ import { CochesModule } from './coches/coches.module';
 import { UbicacionModule } from './ubicacion/ubicacion.module';
 import { HomeModule } from './home/home.module';
 import { AlquileresModule } from './alquileres/alquileres.module';
+import { FormsModule } from '@angular/forms';
+import { BuscadorComponent } from './shared/buscador/buscador.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    BuscadorComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +35,8 @@ import { AlquileresModule } from './alquileres/alquileres.module';
     ControlAccessModule,
     CochesModule,
     UbicacionModule,
-    AlquileresModule
+    AlquileresModule,
+    FormsModule
   ],
   providers: [AuthGuard, LoginService, CochesService],
   bootstrap: [AppComponent]

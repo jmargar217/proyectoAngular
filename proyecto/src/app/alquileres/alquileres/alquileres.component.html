@@ -1,24 +1,26 @@
-<div>
-  <table>
-      <thead>
-          <tr>
-              <th>ID</th>
-              <th>Número de días</th>
-              <th>Precio</th>
-              <th>Fecha entrega</th>
-              <th></th>
-          </tr>
-      </thead>
-      <tbody>
-
-          <tr *ngFor="let alquiler of alquileres">
-              <td>{{alquiler.id}}</td>
-              <td>{{alquiler.numDias}}</td>
-              <td>{{alquiler.precio}}</td>
-              <td>{{alquiler.fechaEntrega}}</td>
-          </tr>
-      </tbody>
-  </table>
-
+<div class="table-responsive" style="margin-top:50px">
+    <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Fecha Entrega</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alquiler of alquileres">
+                <td>{{alquiler.id}}</td>
+                <td>{{alquiler.fecha}}</td>
+                <td>{{alquiler.fechaEntrega}}</td>
+                <td>{{alquiler.precio}}</td>
+                <td>{{alquiler.coche.marca}}</td>
+                <td>{{alquiler.coche.modelo}}</td>
+                <td><a href="#" (click)="borrar()">Borrar alquiler</a></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<router-outlet></router-outlet>

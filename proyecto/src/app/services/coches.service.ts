@@ -38,6 +38,18 @@ export class CochesService {
     return this.http.get<Coche>(url,options);
   }
 
+  getCochesByMarca(marca:string){
+    const url = `${this.baseUrl}/buscador`;
+    const busqueda = {
+      "marca":marca
+    }
+    const opcionHeader = new HttpHeaders();
+    opcionHeader.append('Access-Control-Allow-Origin','*');
+
+    return this.http.post<boolean>(url,busqueda,{headers:opcionHeader});
+
+  }
+
 
   getAccesorios(){
     let token = localStorage.getItem('token');
