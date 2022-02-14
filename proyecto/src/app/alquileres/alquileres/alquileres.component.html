@@ -1,1 +1,24 @@
-<p>alquileres works!</p>
+<div>
+  <table>
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Número de días</th>
+              <th>Precio</th>
+              <th>Fecha entrega</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+
+          <tr *ngFor="let alquiler of alquileres">
+              <td>{{alquiler.id}}</td>
+              <td>{{alquiler.numDias}}</td>
+              <td>{{alquiler.precio}}</td>
+              <td>{{alquiler.fechaEntrega}}</td>
+          </tr>
+      </tbody>
+  </table>
+
+</div>
+<router-outlet></router-outlet>

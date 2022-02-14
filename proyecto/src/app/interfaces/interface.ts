@@ -43,6 +43,9 @@ export interface Alquiler{
   id:number,
   numDias:number,
   coche:Coche,
+  precio:number,
+  fecha:Date,
+  fechaEntrega:Date,
   accesorios:Accesorio[]
 
 }
