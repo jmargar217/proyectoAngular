@@ -24,7 +24,6 @@ export class AlquilerService {
     }
 
     const url = `${this.baseUrl}/alquiler/${id}`;
-    console.log(url);
     return this.http.get<Alquiler[]>(url,options);
   }
 
@@ -50,5 +49,18 @@ export class AlquilerService {
     return aux;
   }
 
+  borrarAlquiler(id:number){
+    let token= localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
+    const options = {
+      headers: headers
+    }
+    const url = `${this.baseUrl}/usuario/alquiler/${id}`;
+    return this.http.get(url,options);
+  }
 
 }

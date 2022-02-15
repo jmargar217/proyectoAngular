@@ -41,6 +41,7 @@ export class AlquileresComponent implements OnInit, OnDestroy {
 
   borrar(){
 
+    this.alquilerService.borrarAlquiler(4);
 
   }
 
