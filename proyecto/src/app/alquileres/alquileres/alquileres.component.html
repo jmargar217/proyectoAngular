@@ -19,7 +19,7 @@
                 <td>{{alquiler.precio}} €</td>
                 <td>{{alquiler.coche.marca}}</td>
                 <td>{{alquiler.coche.modelo}}</td>
-                <td><a href="#" (click)="borrar()">Borrar alquiler</a></td>
+                <td><a [routerLink]="['/borrar',alquiler.id]">Borrar alquiler</a></td>
             </tr>
         </tbody>
     </table>

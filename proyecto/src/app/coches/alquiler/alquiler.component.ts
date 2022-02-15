@@ -47,16 +47,21 @@ export class AlquilerComponent implements OnInit {
   }
 
   getCoche(){
-    this.servicioCoche.getCochesById(this.rutaActiva.snapshot.params["id"]).subscribe(resp =>{
-      this.coche = resp;
-      this.mostrar = true;
+    this.servicioCoche.getCochesById(this.rutaActiva.snapshot.params["id"])
+    .subscribe({
+      next: (resp =>{
+        this.coche = resp;
+        this.mostrar = true;
+      })
     })
-
   }
 
   getAccesorios(){
-    this.servicioCoche.getAccesorios().subscribe(resp=>{
-      this.accesorios=resp;
+    this.servicioCoche.getAccesorios()
+    .subscribe({
+      next: (resp =>{
+        this.accesorios=resp;
+      })
     })
   }
 

@@ -27,6 +27,8 @@ export class AlquilerService {
     return this.http.get<Alquiler[]>(url,options);
   }
 
+
+
   crearAlquiler(alquiler:AlquilerDTO){
     let token  = localStorage.getItem('token');
     const url = `${this.baseUrl}/alquiler`;
@@ -52,15 +54,12 @@ export class AlquilerService {
   borrarAlquiler(id:number){
     let token= localStorage.getItem('token');
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    })
-    const options = {
-      headers: headers
-    }
+    const opcionHeader = new HttpHeaders();
+    opcionHeader.append('Access-Control-Allow-Origin','*');
+    opcionHeader.append('Authorization',`Bearer ${token}`);
+
     const url = `${this.baseUrl}/usuario/alquiler/${id}`;
-    return this.http.get(url,options);
+    return this.http.delete(url,{headers:opcionHeader});
   }
 
 }
