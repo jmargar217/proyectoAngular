@@ -54,6 +54,7 @@ export interface AlquilerDTO{
   idUser:string,
   coche:number,
   numDias:number,
+  fecha:string,
   accesorios:Accesorio[]
 
 }

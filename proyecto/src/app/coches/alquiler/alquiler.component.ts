@@ -14,16 +14,19 @@ export class AlquilerComponent implements OnInit {
   coche!:Coche;
   accesorios:Accesorio[] = [];
 
+  fechaActual = new Date().toJSON().slice(0,19);
   //Todos los números de tarjeta Visa comienzan con el número 4.
   //Las tarjetas nuevas tienen 16 dígitos. Las tarjetas viejas tienen 13.
 
   formulario: FormGroup = this.fb.group({
     numDias:[, ],
+    fecha:[,],
     tarjeta:['']
   });
 
   alquiler={
     numDias:0,
+    fecha: this.fechaActual,
     tarjeta:'',
   }
 
@@ -63,6 +66,7 @@ export class AlquilerComponent implements OnInit {
       idUser: localStorage.getItem("idUser")!,
       coche:this.coche.id,
       numDias:this.alquiler.numDias,
+      fecha:this.alquiler.fecha,
       accesorios:accesoriosChecked
     }
     this.servicioAlquiler.crearAlquiler(alquiler).subscribe(resp=>{

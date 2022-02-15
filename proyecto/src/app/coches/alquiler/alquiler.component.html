@@ -15,6 +15,14 @@
             <div class="p-4">
                 <h3 class="text-primary">Alquiler</h3>
                 <div class="form-group">
+                  <label for="numDias">Fecha de inicio:</label>
+                  <input type="datetime-local" id="fecha" name="fecha" [(ngModel)]="alquiler.fecha" class="form-control" value={{fechaActual}} min="{{fechaActual}}" required>
+                  <span class="input-group "></span>
+                  <span class="form-text text-danger" *ngIf="formulario.controls['fecha']?.errors && formulario.controls['fecha']?.touched">
+                  Debe indicar un fecha
+                </span>
+              </div>
+                <div class="form-group">
                     <label for="numDias">Número de días</label>
                     <input type="number" id="numDias" name="numDias" [(ngModel)]="alquiler.numDias" class="form-control" required pattern="^([1-9]\d*(\.\d*[1-9][0-9])?)|(0\.\d*[1-9][0-9])|(0\.\d*[1-9])$">
                     <span class="input-group "></span>

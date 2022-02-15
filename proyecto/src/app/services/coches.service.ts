@@ -34,7 +34,7 @@ export class CochesService {
     const options = {
       headers: headers
     }
-    const url = `${this.baseUrl}/coche/${idCoche}`;
+    const url = `${this.baseUrl}/coches/${idCoche}`;
     return this.http.get<Coche>(url,options);
   }
 
