@@ -58,7 +58,7 @@ export class AlquilerService {
     opcionHeader.append('Access-Control-Allow-Origin','*');
     opcionHeader.append('Authorization',`Bearer ${token}`);
 
-    const url = `${this.baseUrl}/alquiler/${id}`;
+    const url = `${this.baseUrl}/borrar/${id}`;
     return this.http.delete(url,{headers:opcionHeader});
   }
 
