@@ -36,19 +36,28 @@ export class AlquileresComponent implements OnInit, OnDestroy {
     .subscribe({
       next: (resp => {
         this.alquileres=resp;
-        this.dtTrigger.next(resp);
-     }),
-     error: resp =>{
-       console.log(resp.error.mensaje);
-       Swal.fire({
-        title: 'No tiene alquileres realizados',
-        icon: 'error',
-        confirmButtonText: 'Ok'
-      })
-      this.router.navigateByUrl('coches');
+        if(this.alquileres.length==0){
+          Swal.fire({
+            title: 'No tiene alquileres realizados',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
+          this.router.navigateByUrl('coches');
 
-     }
+        }else{
+          this.dtTrigger.next(resp);
+        }
+
+
+     })
    });
+  }
+
+  borrar(id:number){
+    this.alquilerService.borrarAlquiler(id).subscribe(resp=>{
+      this.router.navigateByUrl('coches');
+    });
+
   }
 }
 

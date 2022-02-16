@@ -13,6 +13,8 @@ import { CochesService } from 'src/app/services/coches.service';
 export class AlquilerComponent implements OnInit {
   coche!:Coche;
   accesorios:Accesorio[] = [];
+  precio:Number = 0;
+  mostrarPrecio:boolean = false;
 
   fechaActual = new Date().toJSON().slice(0,19);
   //Todos los números de tarjeta Visa comienzan con el número 4.
@@ -77,5 +79,21 @@ export class AlquilerComponent implements OnInit {
     this.servicioAlquiler.crearAlquiler(alquiler).subscribe(resp=>{
       this.router.navigateByUrl('listaAlquiler');
     });
+  }
+
+  calcularPrecio(){
+    let accesoriosChecked:Accesorio[] = this.servicioAlquiler.accesoriosMarcados(this.accesorios)
+    let alquiler:AlquilerDTO = {
+      idUser: localStorage.getItem("idUser")!,
+      coche:this.coche.id,
+      numDias:this.alquiler.numDias,
+      fecha:this.alquiler.fecha,
+      accesorios:accesoriosChecked
+    }
+    this.servicioAlquiler.calcularPrecio(alquiler).subscribe(resp=>{
+      this.precio=resp;
+      this.mostrarPrecio=true;
+    });
+
   }
 }

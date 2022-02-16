@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { AlquileresComponent } from './alquileres/alquileres.component';
 import { AlquileresRoutingModule } from './alquileres-routing.module';
 import { DataTablesModule } from 'angular-datatables';
-import { BorrarAlquilerComponent } from './borrar-alquiler/borrar-alquiler.component';
 
 @NgModule({
   declarations: [
-    AlquileresComponent,
-    BorrarAlquilerComponent
+    AlquileresComponent
+
   ],
-  exports:[AlquileresComponent,BorrarAlquilerComponent],
+  exports:[AlquileresComponent],
   imports: [
     CommonModule,
     DataTablesModule,

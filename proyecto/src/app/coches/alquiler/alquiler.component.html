@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="col-5">
-        <form (ngSubmit)="crearAlquiler()" autocomplete="off" #formulario="ngForm">
+        <form autocomplete="off" #formulario="ngForm">
             <div class="p-4">
                 <h3 class="text-primary">Alquiler</h3>
                 <div class="form-group">
@@ -44,10 +44,23 @@
                         <div class="col"> {{accesorio.nombre}} ({{accesorio.precio}}€)</div>
                         <div class="col"><input type="checkbox" name="accesorio" [(ngModel)]="accesorio.checked" class="form-check"></div>
                     </div>
+                </div><br>
+                <div class="row">
+                  <div class="col">
+                    <button (click)="crearAlquiler()" [disabled]="formulario.invalid" class="btn btn-primary text-center mt-2">
+                      Alquilar
+                      </button>
+                  </div>
+                  <div class="col">
+                    <button (click)="calcularPrecio()" [disabled]="formulario.invalid" class="btn btn-dark text-center mt-2">
+                      Calcular Precio
+                      </button>
+                  </div>
+                  <div *ngIf="!mostrar" class="col">
+                     {{precio}}
+                  </div>
+
                 </div>
-                <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary text-center mt-2">
-                Alquilar
-            </button>
             </div>
         </form>
     </div>
