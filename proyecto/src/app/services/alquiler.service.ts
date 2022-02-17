@@ -58,13 +58,13 @@ export class AlquilerService {
     opcionHeader.append('Access-Control-Allow-Origin','*');
     opcionHeader.append('Authorization',`Bearer ${token}`);
 
-    const url = `${this.baseUrl}/borrar/${id}`;
+    const url = `${this.baseUrl}/alquiler/${id}`;
     return this.http.delete(url,{headers:opcionHeader});
   }
 
   calcularPrecio(alquiler:AlquilerDTO){
     let token  = localStorage.getItem('token');
-    const url = `${this.baseUrl}/calcularAlquiler`;
+    const url = `${this.baseUrl}/calcular-alquiler`;
 
     const opcionHeader = new HttpHeaders();
     opcionHeader.append('Access-Control-Allow-Origin','*');
