@@ -43,8 +43,8 @@ export class CochesService {
     const busqueda = {
       "marca":marca
     }
-    const opcionHeader = new HttpHeaders();
-    opcionHeader.append('Access-Control-Allow-Origin','*');
+    const opcionHeader = new HttpHeaders()
+    .set('Access-Control-Allow-Origin','*');
 
     return this.http.post<boolean>(url,busqueda,{headers:opcionHeader});
 

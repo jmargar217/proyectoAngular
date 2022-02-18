@@ -33,11 +33,11 @@ export class AlquilerService {
     let token  = localStorage.getItem('token');
     const url = `${this.baseUrl}/alquiler`;
 
-    const opcionHeader = new HttpHeaders();
-    opcionHeader.append('Access-Control-Allow-Origin','*');
-    opcionHeader.append('Authorization',`Bearer ${token}`);
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization',`Bearer ${token}`);
 
-    return this.http.post<Alquiler>(url,alquiler,{headers:opcionHeader});
+    return this.http.post<Alquiler>(url,alquiler,{headers:headers});
 
   }
 
@@ -54,9 +54,8 @@ export class AlquilerService {
   borrarAlquiler(id:number){
     let token= localStorage.getItem('token');
 
-    const opcionHeader = new HttpHeaders();
-    opcionHeader.append('Access-Control-Allow-Origin','*');
-    opcionHeader.append('Authorization',`Bearer ${token}`);
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization',`Bearer ${token}`);
 
     const url = `${this.baseUrl}/alquiler/${id}`;
     return this.http.delete(url,{headers:opcionHeader});
@@ -66,9 +65,8 @@ export class AlquilerService {
     let token  = localStorage.getItem('token');
     const url = `${this.baseUrl}/calcular-alquiler`;
 
-    const opcionHeader = new HttpHeaders();
-    opcionHeader.append('Access-Control-Allow-Origin','*');
-    opcionHeader.append('Authorization',`Bearer ${token}`);
+    const opcionHeader = new HttpHeaders()
+    .set('Authorization',`Bearer ${token}`);
     return this.http.post<Number>(url,alquiler,{headers:opcionHeader})
 
   }
