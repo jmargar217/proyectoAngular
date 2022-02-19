@@ -1,5 +1,5 @@
 <div class="row gx-0" *ngIf="mostrar">
-    <div class="col-5">
+    <div class="col-xl-5 col-lg-5 col-md-5 col-xs-12">
         <div class="card sinpadding">
             <img class="card-img-top" src="{{coche.imagen}}" alt="Imagen de coche">
             <div class="card-body">
@@ -10,10 +10,10 @@
             </div>
         </div>
     </div>
-    <div class="col-7">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-7">
         <form autocomplete="off" #formulario="ngForm">
             <div class="p-4">
-                <h3 class="text-primary">Alquiler</h3>
+                <h3 class="text-dark">Alquiler</h3>
                 <div class="form-group">
                     <label for="numDias">Fecha de inicio:</label>
                     <input type="datetime-local" id="fecha" name="fecha" [(ngModel)]="alquiler.fecha" class="form-control" value={{fechaActual}} min="{{fechaActual}}" required>
@@ -38,25 +38,25 @@
                     Debe indicar un número de tarjeta valido
                 </span>
                 </div><br>
-                <h5 class="text-primary">Accesorios</h5>
+                <h5 class="text-dark">Accesorios</h5>
                 <div class="form-group" *ngFor="let accesorio of accesorios">
                     <div class="row gx-0">
                         <div class="col"> {{accesorio.nombre}} ({{accesorio.precio}}€)</div>
-                        <div class="col"><input type="checkbox" name="accesorio" [(ngModel)]="accesorio.checked" class="form-check"></div>
+                        <div class="col-8"><input type="checkbox" name="accesorio" [(ngModel)]="accesorio.checked" class="form-check"></div>
                     </div>
                 </div><br>
                 <div class="row gx-0 ">
                     <div class="col-4">
-                        <button (click)="crearAlquiler()" [disabled]="formulario.invalid" class="btn btn-primary text-center mt-2">
+                        <button (click)="crearAlquiler()" [disabled]="formulario.invalid" class="btn btn-dark text-center mt-2">
                       Alquilar
                       </button>
                     </div>
-                    <div class="col-4">
+                    <div class="col-xs-6 col-xl-5 col-lg-5 col-md-5">
                         <button (click)="calcularPrecio()" [disabled]="formulario.invalid" class="btn btn-dark text-center mt-2">
                       Calcular Precio
                       </button>
                     </div>
-                    <div *ngIf="mostrarPrecio" class="col-4">
+                    <div *ngIf="mostrarPrecio" class="col-xs-8 col-xl-8 col-lg-8 col-md-8">
                         <br>
                         <h5> Precio total: {{precio}} €</h5>
                     </div>

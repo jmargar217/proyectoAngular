@@ -1,6 +1,8 @@
 <br>
 <div class="right">
-    <form (ngSubmit)="buscar()">
-        <input type="text" placeholder="Buscar por marca" name="termino" [(ngModel)]="termino">
+    <form class="navbar-form" role="search" (ngSubmit)="buscar()">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar por marca" name="srch-term" id="srch-term" [(ngModel)]="termino">
+        </div>
     </form>
 </div>

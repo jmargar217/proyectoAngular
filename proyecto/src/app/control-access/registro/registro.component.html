@@ -3,7 +3,7 @@
         <div class="rounded d-flex justify-content-center">
             <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
                 <div class="text-center">
-                    <h3 class="text-primary">Registro</h3>
+                    <h3 class="text-dark">Registro</h3>
                 </div>
                 <form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="formulario">
                     <div class="form-group">
@@ -35,7 +35,7 @@
                         </span>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary float-end" [disabled]="formulario.invalid">
+                    <button type="submit" class="btn btn-dark float-end" [disabled]="formulario.invalid">
                       Registrar
                     </button>
                 </form>

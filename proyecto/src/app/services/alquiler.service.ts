@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Accesorio, Alquiler, AlquilerDTO } from '../interfaces/interface';
@@ -13,21 +13,17 @@ export class AlquilerService {
 
   getListaAlquiler(){
     let token= localStorage.getItem('token');
-    let id = localStorage.getItem('idUser');
-
+    let id = localStorage.getItem('idUser')!;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
-    const options = {
-      headers: headers
-    }
+    const params = new  HttpParams()
+    .set("id",id);
 
-    const url = `${this.baseUrl}/alquiler/${id}`;
-    return this.http.get<Alquiler[]>(url,options);
+    const url = `${this.baseUrl}/alquiler`;
+    return this.http.get<Alquiler[]>(url,{headers:headers,params});
   }
-
-
 
   crearAlquiler(alquiler:AlquilerDTO){
     let token  = localStorage.getItem('token');
@@ -36,9 +32,7 @@ export class AlquilerService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization',`Bearer ${token}`);
-
     return this.http.post<Alquiler>(url,alquiler,{headers:headers});
-
   }
 
   accesoriosMarcados(accesorios:Accesorio[]){
@@ -56,8 +50,8 @@ export class AlquilerService {
 
     const opcionHeader = new HttpHeaders()
     .set('Authorization',`Bearer ${token}`);
-
     const url = `${this.baseUrl}/alquiler/${id}`;
+
     return this.http.delete(url,{headers:opcionHeader});
   }
 
@@ -67,8 +61,6 @@ export class AlquilerService {
 
     const opcionHeader = new HttpHeaders()
     .set('Authorization',`Bearer ${token}`);
-    return this.http.post<Number>(url,alquiler,{headers:opcionHeader})
-
+    return this.http.post<Number>(url,alquiler,{headers:opcionHeader});
   }
-
 }

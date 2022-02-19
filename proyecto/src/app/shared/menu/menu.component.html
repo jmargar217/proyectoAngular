@@ -1,44 +1,47 @@
 <div class="container">
-    <div>
-        <app-buscador (onEnter)="buscar($event)"></app-buscador>
+    <div class="row-6">
+        <app-buscador (onEnter)="buscar($event)" class="col-xl-12 col-lg-12 col-md-12 col-xs-12"></app-buscador>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
+    <div class="row-6">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light col-xl-8 col-lg-8 col-md-8 col-xs-12">
+            <button class="navbar-toggler" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand">
-            <img src="../../../assets/frente-del-coche-sedan.png" alt="" height="60px">
-        </a>
+            <a class="navbar-brand">
+                <img src="../../../assets/frente-del-coche-sedan.png" alt="" height="60px">
+            </a>
 
-        <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ">
+                    <div class="dropdown">
+                        <button class="btn btn-toggle align-items-center rounded dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Acceso
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a></li>
-                        <li><a class="nav-link" routerLinkActive="active" routerLink="/registro">Registro</a></li>
-                        <li><a class="nav-link" routerLinkActive="active" (click)="logout()">Logout</a></li>
-                    </ul>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a></li>
+                            <li><a class="nav-link" routerLinkActive="active" routerLink="/registro">Registro</a></li>
+                            <li><a class="nav-link" routerLinkActive="active" (click)="logout()">Logout</a></li>
+                        </ul>
 
-                </div>
-                <li class="nav-item active">
-                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="">Home</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/coches">Lista Coches</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/listaAlquiler">Mis Alquileres</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" routerLinkActive="active" routerLink="/ubicacion">Contacto</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                    </div>
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="">Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/coches">Lista Coches</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/listaAlquiler">Mis Alquileres</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLinkActive="active" routerLink="/ubicacion">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 </div>
+
 
 <div class="sticky-container">
     <ul class="sticky">

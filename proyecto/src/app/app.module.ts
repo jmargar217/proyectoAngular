@@ -17,6 +17,7 @@ import { HomeModule } from './home/home.module';
 import { AlquileresModule } from './alquileres/alquileres.module';
 import { FormsModule } from '@angular/forms';
 import { BuscadorComponent } from './shared/buscador/buscador.component';
+import { PieComponent } from './shared/pie/pie.component';
 
 
 @NgModule({
@@ -24,8 +25,10 @@ import { BuscadorComponent } from './shared/buscador/buscador.component';
     AppComponent,
     MenuComponent,
     HomeComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    PieComponent
   ],
+  exports:[PieComponent],
 
   imports: [
     BrowserModule,

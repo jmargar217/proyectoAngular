@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Accesorio, Coche } from '../interfaces/interface';
@@ -40,13 +40,15 @@ export class CochesService {
 
   getCochesByMarca(marca:string){
     const url = `${this.baseUrl}/buscador`;
-    const busqueda = {
-      "marca":marca
-    }
-    const opcionHeader = new HttpHeaders()
-    .set('Access-Control-Allow-Origin','*');
 
-    return this.http.post<boolean>(url,busqueda,{headers:opcionHeader});
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+
+    const params = new  HttpParams()
+    .set("marca",marca);
+
+    return this.http.get<boolean>(url,{headers:headers,params});
 
   }
 
