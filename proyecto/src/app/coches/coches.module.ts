@@ -5,6 +5,7 @@ import { AlquilerComponent } from './alquiler/alquiler.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CochesRoutingModule } from './coches-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DataTablesModule,
     CochesRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
 
   ]
 })

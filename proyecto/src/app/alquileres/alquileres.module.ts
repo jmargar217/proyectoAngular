@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AlquileresComponent } from './alquileres/alquileres.component';
 import { AlquileresRoutingModule } from './alquileres-routing.module';
 import { DataTablesModule } from 'angular-datatables';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { DataTablesModule } from 'angular-datatables';
   imports: [
     CommonModule,
     DataTablesModule,
-    AlquileresRoutingModule
+    AlquileresRoutingModule,
+    SharedModule
   ]
 })
 export class AlquileresModule { }

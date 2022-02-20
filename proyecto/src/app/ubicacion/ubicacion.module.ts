@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { UbicacionRoutingModule } from './ubicacion-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    UbicacionRoutingModule
+    UbicacionRoutingModule,
+    SharedModule
   ]
 })
 export class UbicacionModule { }

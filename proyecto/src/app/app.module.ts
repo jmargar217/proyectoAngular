@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MenuComponent } from './shared/menu/menu.component';
-import { HomeComponent } from './home/home.component';
 import { HttpClientModule} from '@angular/common/http'
 import { AuthGuard } from './auth.guard';
 import { ControlAccessModule } from './control-access/control-access.module';
@@ -16,19 +14,13 @@ import { UbicacionModule } from './ubicacion/ubicacion.module';
 import { HomeModule } from './home/home.module';
 import { AlquileresModule } from './alquileres/alquileres.module';
 import { FormsModule } from '@angular/forms';
-import { BuscadorComponent } from './shared/buscador/buscador.component';
-import { PieComponent } from './shared/pie/pie.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    HomeComponent,
-    BuscadorComponent,
-    PieComponent
+    AppComponent
   ],
-  exports:[PieComponent],
 
   imports: [
     BrowserModule,
@@ -39,6 +31,7 @@ import { PieComponent } from './shared/pie/pie.component';
     CochesModule,
     UbicacionModule,
     AlquileresModule,
+    SharedModule,
     FormsModule
   ],
   providers: [AuthGuard, LoginService, CochesService],
