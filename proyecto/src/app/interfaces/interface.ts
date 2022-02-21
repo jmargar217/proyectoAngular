@@ -58,3 +58,10 @@ export interface AlquilerDTO{
   accesorios:Accesorio[]
 
 }
+
+
+export interface FileDTO{
+  file:string,
+  fileSource:string,
+  name:string
+}
