@@ -15,7 +15,6 @@ export class FicheroComponent implements OnInit {
   ngOnInit(): void {
   }
   myForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
   });

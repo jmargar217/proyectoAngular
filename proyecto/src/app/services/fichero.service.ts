@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { FileDTO } from '../interfaces/interface';
@@ -13,10 +13,11 @@ export class FicheroService {
 
 
   subirArchivo(fichero:FileDTO){
-    let aux = fichero.fileSource;
-    console.log(fichero);
-    const url = `${this.baseUrl}/upload`;
-    return this.http.post(url,aux);
+    const params = new  HttpParams()
+    .set("file",fichero.fileSource);
 
+    console.log(fichero.fileSource);
+    const url = `${this.baseUrl}/upload`;
+    return this.http.post(url,fichero);
   }
 }

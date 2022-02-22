@@ -1,28 +1,10 @@
 <h1>Angular File Upload Tutorial Example - ItSolutionStuff.com</h1>
 
-<form [formGroup]="myForm" (ngSubmit)="submit()">
-
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input
-            formControlName="name"
-            id="name"
-            type="text"
-            class="form-control">
-            <span class="form-text text-danger" *ngIf="campoEsValido('name')">
-              Debe indicar el nombre del
-            </span>
-    </div>
-
+<form [formGroup]="myForm" (ngSubmit)="submit()" enctype="multipart/form-data">
     <div class="form-group">
         <label for="file">File</label>
-        <input
-            formControlName="file"
-            id="file"
-            type="file"
-            class="form-control"
-            (change)="onFileChange($event)"/>
-            <span class="form-text text-danger" *ngIf="campoEsValido('file')">
+        <input formControlName="file" id="file" name="file" type="file" class="form-control" (change)="onFileChange($event)" />
+        <span class="form-text text-danger" *ngIf="campoEsValido('file')">
             </span>
     </div>
 
