@@ -1,11 +1,6 @@
-<div class="row right">
-    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12">
-        <app-buscador (onEnter)="buscar($event)"></app-buscador>
-    </div>
-</div>
 <div class="container">
     <div class="row-6">
-        <nav class="navbar offset-md-1 navbar-expand-lg fixed-top navbar-light bg-light col-xl-7 col-lg-7 col-md-7">
+        <nav class="navbar offset-md-1 navbar-expand-lg fixed-top navbar-light bg-light">
             <button class="navbar-toggler" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,6 +37,9 @@
                         <a class="nav-link" routerLinkActive="active" routerLink="/ubicacion">Contacto</a>
                     </li>
                 </ul>
+            </div>
+            <div>
+                <app-buscador (onEnter)="buscar($event)"></app-buscador>
             </div>
         </nav>
     </div>
