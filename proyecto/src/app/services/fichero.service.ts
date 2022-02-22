@@ -12,6 +12,12 @@ export class FicheroService {
 
 
   subirArchivo(fichero:FormData, coche:any){
+    let token= localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    })
 
     const params = new  HttpParams()
     .set("marca",coche.marca)

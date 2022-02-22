@@ -1,9 +1,11 @@
+<div class="row right">
+    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12">
+        <app-buscador (onEnter)="buscar($event)"></app-buscador>
+    </div>
+</div>
 <div class="container">
     <div class="row-6">
-        <app-buscador (onEnter)="buscar($event)" class="col-xl-12 col-lg-12 col-md-12 col-xs-12"></app-buscador>
-    </div>
-    <div class="row-6">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light col-xl-8 col-lg-8 col-md-8 col-xs-12">
+        <nav class="navbar offset-md-1 navbar-expand-lg fixed-top navbar-light bg-light col-xl-7 col-lg-7 col-md-7">
             <button class="navbar-toggler" data-bs-target="#menu" data-bs-toggle="collapse" type="button">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,7 +13,7 @@
                 <img src="../../../assets/frente-del-coche-sedan.png" alt="" height="60px">
             </a>
 
-            <div class="collapse navbar-collapse" id="menu">
+            <div class="collapse navbar-collapse row" id="menu">
                 <ul class="navbar-nav ">
                     <div class="dropdown">
                         <button class="btn btn-toggle align-items-center rounded dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,8 +36,8 @@
                         <a class="nav-link" routerLinkActive="active" routerLink="/listaAlquiler">Mis Alquileres</a>
                     </li>
                     <li class="nav-item active">
-                      <a class="nav-link" routerLinkActive="active" routerLink="/fichero">Subir imágenes</a>
-                  </li>
+                        <a class="nav-link" routerLinkActive="active" routerLink="/fichero">Subir imágenes</a>
+                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" routerLinkActive="active" routerLink="/ubicacion">Contacto</a>
                     </li>
@@ -43,28 +45,4 @@
             </div>
         </nav>
     </div>
-</div>
-
-
-<div class="sticky-container">
-    <ul class="sticky">
-        <li>
-            <img src="../../../assets/facebook.png" width="32" height="32">
-            <p>
-                <a href="https://www.facebook.com" target="_blank">Facebook</a>
-            </p>
-        </li>
-        <li>
-            <img src="../../../assets/twitter.png" width="32" height="32">
-            <p>
-                <a href="https://twitter.com" target="_blank">Twitter</a>
-            </p>
-        </li>
-        <li>
-            <img src="../../../assets/youtube.png" width="32" height="32">
-            <p>
-                <a href="http://www.youtube.com" target="_blank">Youtube</a>
-            </p>
-        </li>
-    </ul>
 </div>

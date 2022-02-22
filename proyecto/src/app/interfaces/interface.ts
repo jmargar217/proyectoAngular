@@ -65,3 +65,12 @@ export interface FileDTO{
   fileSource:string,
   name:string
 }
+
+export interface CocheDTO{
+  marca:string,
+  modelo:string,
+  motor:string,
+  precioFijo:number,
+  year:string
+
+}

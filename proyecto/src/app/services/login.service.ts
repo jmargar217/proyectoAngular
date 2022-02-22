@@ -39,6 +39,7 @@ export class LoginService {
     }
     this.http.get(url,options)
       .subscribe(resp =>{
+        console.log(resp);
         localStorage.setItem("idUser",JSON.stringify(resp));
       });
   }
