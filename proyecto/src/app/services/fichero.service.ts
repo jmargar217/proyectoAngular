@@ -13,15 +13,10 @@ export class FicheroService {
 
 
   subirArchivo(fichero:FileDTO){
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'image/x-png'
-    })
-
     let aux = fichero.fileSource;
     console.log(fichero);
     const url = `${this.baseUrl}/upload`;
-    return this.http.post(url,aux,{headers:headers});
+    return this.http.post(url,aux);
 
   }
 }
