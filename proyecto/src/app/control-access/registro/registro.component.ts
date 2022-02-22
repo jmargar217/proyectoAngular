@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import Swal from 'sweetalert2';
-import { UsuarioRegister } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-registro',

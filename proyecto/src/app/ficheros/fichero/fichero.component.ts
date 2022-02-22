@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 import { FicheroService } from '../../services/fichero.service';
 
 @Component({
@@ -15,8 +16,14 @@ export class FicheroComponent implements OnInit {
   ngOnInit(): void {
   }
   myForm = new FormGroup({
+    marca: new FormControl('',[Validators.required]),
+    modelo: new FormControl('',[Validators.required]),
+    motor:new FormControl('',[Validators.required]),
+    year: new FormControl('',[Validators.required]),
+    precioFijo:new FormControl('',[Validators.required]),
     file: new FormControl('', [Validators.required]),
     fileSource: new FormControl('', [Validators.required])
+
   });
 
 
@@ -35,12 +42,24 @@ export class FicheroComponent implements OnInit {
   }
 
   submit(){
-    const formData = new FormData();
-    formData.append('file', this.myForm.value);
-    const fichero = this.myForm.value;
 
-    this.fileService.subirArchivo(fichero).subscribe(resp=>{
-      console.log(resp);
+    const coche = {
+      marca: this.myForm.get('marca')?.value,
+      modelo: this.myForm.get('modelo')?.value,
+      motor: this.myForm.get('motor')?.value,
+      year: this.myForm.get('year')?.value,
+      precioFijo: this.myForm.get('precioFijo')?.value
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.myForm.get('fileSource')!.value);
+
+    this.fileService.subirArchivo(formData, coche).subscribe(resp=>{
+      Swal.fire({
+        title: `{{resp}}`,
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
     })
 
   }

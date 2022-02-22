@@ -1,12 +1,46 @@
-<h1>Angular File Upload Tutorial Example - ItSolutionStuff.com</h1>
+<h2>Añadir coche</h2>
 
 <form [formGroup]="myForm" (ngSubmit)="submit()" enctype="multipart/form-data">
+  <div class="form-group">
+    <label>Marca</label>
+    <input class="form-control" type="text" class="form-control" formControlName="marca">
+    <span class="form-text text-danger" *ngIf="campoEsValido('marca')">
+      Debe escribir las iniciales en mayúsculas
+    </span>
+    </div>
     <div class="form-group">
-        <label for="file">File</label>
+      <label>Modelo</label>
+      <input class="form-control" type="text" class="form-control" formControlName="modelo">
+      <span class="form-text text-danger" *ngIf="campoEsValido('modelo')">
+        Debe escribir las iniciales en mayúsculas
+      </span>
+      </div>
+      <div class="form-group">
+        <label>Motor</label>
+        <input class="form-control" type="text" class="form-control" formControlName="motor">
+        <span class="form-text text-danger" *ngIf="campoEsValido('motor')">
+          Debe escribir las iniciales en mayúsculas
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Año</label>
+        <input class="form-control" type="text" class="form-control" formControlName="year">
+        <span class="form-text text-danger" *ngIf="campoEsValido('year')">
+          Debe escribir las iniciales en mayúsculas
+        </span>
+        </div>
+      <div class="form-group">
+        <label>Precio fijo</label>
+        <input class="form-control" type="number" class="form-control" formControlName="precioFijo">
+        <span class="form-text text-danger" *ngIf="campoEsValido('precioFijo')">
+            Debe escribir las iniciales en mayúsculas
+        </span>
+      </div>
+    <div class="form-group">
+        <label for="file">Imágen coche</label>
         <input formControlName="file" id="file" name="file" type="file" class="form-control" (change)="onFileChange($event)" />
         <span class="form-text text-danger" *ngIf="campoEsValido('file')">
             </span>
     </div>
-
     <button class="btn btn-primary" type="submit" [disabled]="myForm.invalid">Enviar</button>
 </form>
