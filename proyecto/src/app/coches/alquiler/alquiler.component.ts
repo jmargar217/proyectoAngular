@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Accesorio, AlquilerDTO, Coche } from 'src/app/interfaces/interface';
 import { AlquilerService } from 'src/app/services/alquiler.service';
@@ -13,6 +14,7 @@ import { CochesService } from 'src/app/services/coches.service';
 })
 export class AlquilerComponent implements OnInit {
   coche!:Coche;
+  imagen!:string;
   accesorios:Accesorio[] = [];
   precio:Number = 0;
   mostrarPrecio:boolean = false;
@@ -55,6 +57,7 @@ export class AlquilerComponent implements OnInit {
       next: (resp =>{
         this.coche = resp;
         console.log(this.coche.imagen);
+        this.imagen=this.servicioCoche.obtenerImagen(this.coche);
         this.mostrar = true;
       })
     })

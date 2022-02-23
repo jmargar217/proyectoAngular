@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { CocheDTO } from '../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class FicheroService {
 
 
 
-  subirArchivo(fichero:FormData, coche:any){
+  subirArchivo(fichero:FormData, coche:CocheDTO){
     let token= localStorage.getItem('token');
 
     const headers = new HttpHeaders({

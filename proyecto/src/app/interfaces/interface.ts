@@ -1,3 +1,5 @@
+import { Byte } from "@angular/compiler/src/util";
+
 export interface AuthResponse{
   access_token: string;
 
@@ -28,7 +30,7 @@ export interface Coche{
   motor:string,
   year:number,
   precioFijo:number,
-  imagen:string,
+  imagen:Byte[],
   status:boolean
 }
 

@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Accesorio, Coche } from '../interfaces/interface';
+import { Byte } from '@angular/compiler/src/util';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,8 @@ import { Accesorio, Coche } from '../interfaces/interface';
 export class CochesService {
   private baseUrl: string = environment.baseUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private domSanitizer: DomSanitizer) { }
 
   getCoches(){
     let token = localStorage.getItem('token');
@@ -64,5 +67,11 @@ export class CochesService {
     }
     const url = `${this.baseUrl}/accesorios`;
     return this.http.get<Accesorio[]>(url,options);
+  }
+
+  obtenerImagen(coche:Coche){
+    const base64String = btoa(String.fromCharCode(...new Uint8Array(coche.imagen)));
+    const source = `data:image/png;base64,${base64String}`+coche.imagen;
+    return source;
   }
 }
