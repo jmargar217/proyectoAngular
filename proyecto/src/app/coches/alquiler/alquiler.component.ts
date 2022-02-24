@@ -56,7 +56,6 @@ export class AlquilerComponent implements OnInit {
     .subscribe({
       next: (resp =>{
         this.coche = resp;
-        console.log(this.coche.imagen);
         this.imagen=this.servicioCoche.obtenerImagen(this.coche);
         this.mostrar = true;
       })

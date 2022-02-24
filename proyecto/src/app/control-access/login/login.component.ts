@@ -32,8 +32,10 @@ export class LoginComponent implements OnInit {
     this.serviceLogin.login(this.usuario.email,this.usuario.password)
     .subscribe({
       next: (resp =>{
-        localStorage.setItem('token',resp.access_token)
-
+        console.log(resp);
+        localStorage.setItem('token',resp.access_token);
+        localStorage.setItem('idUser',resp.idUser);
+        localStorage.setItem('rol',resp.rol);
         this.serviceLogin.getUsuario();
         this.router.navigateByUrl('coches');
       }),

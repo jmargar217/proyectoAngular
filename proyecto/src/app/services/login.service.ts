@@ -39,7 +39,6 @@ export class LoginService {
     }
     this.http.get(url,options)
       .subscribe(resp =>{
-        console.log(resp);
         localStorage.setItem("idUser",JSON.stringify(resp));
       });
   }
@@ -53,7 +52,7 @@ export class LoginService {
   }
 
   validarToken():Observable<AuthResponse>{
-    const url = `${ this.baseUrl }/coches`;
+    const url = `${ this.baseUrl }/accesorios`;
     const headers = new HttpHeaders()
       .set('Authorization', `Bearer ${localStorage.getItem('token')}` || '' );
 

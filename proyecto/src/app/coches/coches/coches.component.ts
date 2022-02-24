@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Coche } from 'src/app/interfaces/interface';
 import { CochesService } from 'src/app/services/coches.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-coches',
@@ -14,7 +16,8 @@ export class CochesComponent implements OnInit,OnDestroy {
   dtTrigger: Subject<any> = new Subject<any>();
 
 
-  constructor(private serviceCoches:CochesService) { }
+  constructor(private serviceCoches:CochesService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.getCoches();
@@ -36,8 +39,19 @@ export class CochesComponent implements OnInit,OnDestroy {
   getCoches(){
     this.serviceCoches.getCoches().subscribe(resp =>{
       this.coches = resp;
-      this.dtTrigger.next(resp);
+      if(this.coches.length==0){
 
+        Swal.fire({
+          title: 'No hay coches disponibles',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+
+        this.router.navigateByUrl('');
+
+      }else{
+        this.dtTrigger.next(resp);
+      }
     })
   }
 }

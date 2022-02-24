@@ -14,6 +14,7 @@ export class AlquileresComponent implements OnInit, OnDestroy {
   alquileres:Alquiler[] = [];
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+  cochesDefault:boolean=false;
 
   isEmpty:boolean = true;
 

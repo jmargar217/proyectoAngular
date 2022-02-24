@@ -1,7 +1,9 @@
 import { Byte } from "@angular/compiler/src/util";
 
 export interface AuthResponse{
-  access_token: string;
+  access_token: string,
+  rol:string,
+  idUser:string
 
 }
 
@@ -75,4 +77,9 @@ export interface CocheDTO{
   precioFijo:number,
   year:string
 
+}
+
+export interface userDetails{
+  idUser:string,
+  rol:string
 }
