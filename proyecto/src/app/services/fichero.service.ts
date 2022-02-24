@@ -14,9 +14,7 @@ export class FicheroService {
 
   subirArchivo(fichero:FormData, coche:CocheDTO){
     let token= localStorage.getItem('token');
-
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     })
 
@@ -26,9 +24,8 @@ export class FicheroService {
     .set("motor",coche.motor)
     .set('precioFijo',coche.precioFijo)
     .set("year",coche.year);
-
-    console.log(params);
     const url = `${this.baseUrl}/upload`;
-    return this.http.post(url,fichero,{params});
+
+    return this.http.post(url,fichero,{headers:headers,params});
   }
 }

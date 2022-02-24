@@ -39,9 +39,11 @@ export class RegistroComponent implements OnInit {
     this.serviceLogin.registrar(user).
     subscribe({
       next: (resp=>{
-        localStorage.setItem('token',resp.access_token)
+        localStorage.setItem('token',resp.access_token);
+        localStorage.setItem('idUser',resp.idUser);
+        localStorage.setItem('rol',resp.rol);
 
-        this.serviceLogin.getUsuario();
+        //this.serviceLogin.getUsuario();
         this.router.navigateByUrl('coches');
       }),
       error: resp =>{
