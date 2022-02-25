@@ -36,7 +36,8 @@ import { FicheroService } from './services/fichero.service';
     AlquileresModule,
     SharedModule,
     FormsModule,
-    FicherosModule
+    FicherosModule,
+
   ],
   providers: [AuthGuard, LoginService, CochesService, AlquilerService, FicheroService],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FicheroComponent } from './fichero/fichero.component';
 import { FicherosRoutingModule } from './ficheros-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FicherosRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
 
   ],
   exports:[FicheroComponent]

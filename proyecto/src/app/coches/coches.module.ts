@@ -6,7 +6,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { CochesRoutingModule } from './coches-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-
+import { PinchZoomModule } from 'ngx-pinch-zoom';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { SharedModule } from '../shared/shared.module';
     DataTablesModule,
     CochesRoutingModule,
     FormsModule,
-    SharedModule
-
+    SharedModule,
+    PinchZoomModule
   ]
 })
 export class CochesModule { }

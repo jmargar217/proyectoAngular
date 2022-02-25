@@ -3,7 +3,7 @@
 <div class="row gx-0" *ngIf="mostrar">
     <div class="col-xl-5 col-lg-5 col-md-5 col-xs-12">
         <div class="card sinpadding">
-            <img class="card-img-top" src="{{imagen}}" alt="Imagen de coche">
+            <pinch-zoom [limit-zoom]="1" [minScale]="1"><img class="card-img-top" src="{{imagen}}" alt="Imagen de coche"></pinch-zoom>
             <div class="card-body">
                 <h5 class="card-title">{{coche.marca}} {{coche.modelo}} {{coche.year}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Motor: {{coche.motor}}</h6>

@@ -10,10 +10,16 @@ import Swal from 'sweetalert2';
 })
 export class MenuComponent implements OnInit {
   termino: string='';
+  mostrar:boolean=false;
   constructor(private router:Router,
     private servicioCoche:CochesService) { }
 
   ngOnInit(): void {
+    let rol = localStorage.getItem("rol");
+    if(rol=="ADMIN"){
+      this.mostrar=true;
+    }
+    console.log(this.mostrar);
   }
 
   logout(){
