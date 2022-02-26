@@ -6,12 +6,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./buscador.component.css']
 })
 export class BuscadorComponent implements OnInit {
+
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
   termino: string='';
   constructor() { }
 
   ngOnInit(): void {
   }
+  /**
+   * Emite un evento con la busqueda realizada
+   */
   buscar(){
     this.onEnter.emit(this.termino);
   }

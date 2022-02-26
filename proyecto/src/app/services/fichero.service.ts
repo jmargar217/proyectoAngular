@@ -11,7 +11,12 @@ export class FicheroService {
   constructor(private http:HttpClient) { }
 
 
-
+  /**
+   * Peticion POST a la api para subir una imagen
+   * @param fichero imagen de coche
+   * @param coche
+   * @returns
+   */
   subirArchivo(fichero:FormData, coche:CocheDTO){
     let token= localStorage.getItem('token');
     const headers = new HttpHeaders({

@@ -15,6 +15,10 @@ export class PieComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  /**
+   * Cambia el tamaño de letra de toda la página en función del operador marcado (+,-)
+   * @param operator
+   */
   changeFont(operator:any){
     operator === '+' ? this.fontSize++ : this.fontSize--;
     document.getElementsByTagName('body')[0].style.fontSize  = `${this.fontSize}px`;

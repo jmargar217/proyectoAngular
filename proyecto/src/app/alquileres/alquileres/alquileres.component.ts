@@ -20,6 +20,9 @@ export class AlquileresComponent implements OnInit, OnDestroy {
 
   constructor(private alquilerService:AlquilerService, private router:Router) { }
 
+  /**
+   * Obtiene la lista de alquileres del usuario logueado al cargar el componente
+   */
   ngOnInit(): void {
     this.getAlquileres();
     this.dtOptions = {
@@ -32,6 +35,10 @@ export class AlquileresComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
+  /**
+   * Obtiene la lista de alquileres del usuario logueado, de no tener alquileres devuelve una alerta y nos
+   * manda a la pagina de coches disponibles
+   */
   getAlquileres(){
     this.alquilerService.getListaAlquiler()
     .subscribe({
@@ -54,8 +61,17 @@ export class AlquileresComponent implements OnInit, OnDestroy {
    });
   }
 
+  /**
+   * Borra un alquiler a partir de la id del alquier que se obtiene a través del path
+   * @param id del alquiler a borrar
+   */
   borrar(id:number){
     this.alquilerService.borrarAlquiler(id).subscribe(resp=>{
+      Swal.fire({
+        title: "Alquiler borrado",
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
       this.router.navigateByUrl('coches');
     });
 

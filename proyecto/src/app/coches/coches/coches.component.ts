@@ -19,6 +19,9 @@ export class CochesComponent implements OnInit,OnDestroy {
   constructor(private serviceCoches:CochesService,
     private router:Router) { }
 
+  /**
+   * Carga la lista de coches del backend al cargar el componente
+   */
   ngOnInit(): void {
     this.getCoches();
 
@@ -28,6 +31,7 @@ export class CochesComponent implements OnInit,OnDestroy {
       };
 
   }
+
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();

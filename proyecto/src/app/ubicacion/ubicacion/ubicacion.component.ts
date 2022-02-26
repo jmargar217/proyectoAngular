@@ -9,6 +9,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ubicacion.component.css']
 })
 export class UbicacionComponent implements OnInit {
+  /**
+   * Formulario con los datos y validaciones para enviar un comentario
+   */
   formulario: FormGroup = this.fb.group({
     email:['', [Validators.email,Validators.required]],
     nombre:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]],
@@ -19,6 +22,9 @@ export class UbicacionComponent implements OnInit {
 
   constructor(private fb: FormBuilder,private router:Router) { }
 
+  /**
+   * Reseta los valores del formulario al cargar el componente
+   */
   ngOnInit(): void {
     this.formulario.reset({
       email:'',
@@ -28,11 +34,19 @@ export class UbicacionComponent implements OnInit {
     })
   }
 
+   /**
+   * Comprueba el estado de los campos del formulario una vez han sido introducido datos o pasado por encima.
+   * @param campo que ha activado el error
+   * @returns  mensaje de error
+   */
   campoEsValido( campo: string ) {
     return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
   }
 
 
+  /**
+   * Muestra una alerta al validar y enviar el comentario
+   */
   enviar(){
     Swal.fire({
       title: 'Su consulta ha sido enviada',

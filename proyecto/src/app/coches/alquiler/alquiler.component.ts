@@ -19,7 +19,11 @@ export class AlquilerComponent implements OnInit {
   precio:Number = 0;
   mostrarPrecio:boolean = false;
 
+  /**
+   * Formato LocalDateTime
+   */
   fechaActual = new Date().toJSON().slice(0,19);
+
   //Todos los números de tarjeta Visa comienzan con el número 4.
   //Las tarjetas nuevas tienen 16 dígitos. Las tarjetas viejas tienen 13.
 
@@ -42,6 +46,10 @@ export class AlquilerComponent implements OnInit {
     private servicioAlquiler:AlquilerService,
     private router:Router) { }
 
+  /**
+   * Reseta los valores del formulario al cargar el componente y carga el coche elegido y los accesorios
+   * disponibles del backend
+   */
   ngOnInit(): void {
     this.formulario.reset({
       numDias:0,
@@ -51,6 +59,9 @@ export class AlquilerComponent implements OnInit {
     this.getAccesorios();
   }
 
+  /**
+   * Obtiene el coche que se quiere alquiler a través de su id (path)
+   */
   getCoche(){
     this.servicioCoche.getCochesById(this.rutaActiva.snapshot.params["id"])
     .subscribe({
@@ -62,6 +73,9 @@ export class AlquilerComponent implements OnInit {
     })
   }
 
+  /**
+   * Obtiene la lista de accesorios disponibles
+   */
   getAccesorios(){
     this.servicioCoche.getAccesorios()
     .subscribe({
@@ -71,6 +85,10 @@ export class AlquilerComponent implements OnInit {
     })
   }
 
+  /**
+   * Crea un alquiler apartir de los accesorios marcados (checkbox) y los demas datos del formulario. Luego
+   * nos manda a la pagina de nuestros alquileres
+   */
   crearAlquiler(){
     let accesoriosChecked:Accesorio[] = this.servicioAlquiler.accesoriosMarcados(this.accesorios)
     let alquiler:AlquilerDTO = {
@@ -85,6 +103,9 @@ export class AlquilerComponent implements OnInit {
     });
   }
 
+  /**
+   * Calcula el precio del alquiler a partir de los datos elegidos en el formulario y nos lo muestra
+   */
   calcularPrecio(){
     let accesoriosChecked:Accesorio[] = this.servicioAlquiler.accesoriosMarcados(this.accesorios)
     let alquiler:AlquilerDTO = {

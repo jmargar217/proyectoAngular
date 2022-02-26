@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FicheroService } from '../../services/fichero.service';
 
@@ -11,10 +12,14 @@ import { FicheroService } from '../../services/fichero.service';
 })
 export class FicheroComponent implements OnInit {
 
-  constructor(private fileService:FicheroService) { }
+  constructor(private fileService:FicheroService,private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  /**
+   * Datos del formulario para añadir un coche
+   */
   myForm = new FormGroup({
     marca: new FormControl('',[Validators.required]),
     modelo: new FormControl('',[Validators.required]),
@@ -36,11 +41,19 @@ export class FicheroComponent implements OnInit {
       });
     }
   }
-
+  /**
+   * Comprueba el estado de los campos del formulario una vez han sido introducido datos o pasado por encima.
+   * @param campo que ha activado el error
+   * @returns  mensaje de error
+   */
   campoEsValido( campo: string ) {
     return this.myForm.controls[campo].errors && this.myForm.controls[campo].touched;
   }
 
+  /**
+   * Envia el fichero y los datos del coche que se va a añadir, si se envia correctamente devuelve un mensaje
+   * descriptivo y nos manda a la pagina de listado de coches disponibles
+   */
   submit(){
 
     const coche = {
@@ -60,6 +73,7 @@ export class FicheroComponent implements OnInit {
         icon: 'success',
         confirmButtonText: 'Ok'
       })
+      this.router.navigateByUrl('coches');
     })
 
   }

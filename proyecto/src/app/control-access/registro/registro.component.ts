@@ -11,6 +11,9 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent implements OnInit {
 
+  /**
+   * Formulario reactivo con las validaciones necesarios para registrar un usuario
+   */
   formulario: FormGroup = this.fb.group({
     email:['', [Validators.email,Validators.required]],
     password:['',[Validators.minLength(5),Validators.required]],
@@ -20,6 +23,9 @@ export class RegistroComponent implements OnInit {
 
   constructor(private fb: FormBuilder,private serviceLogin:LoginService, private router:Router) { }
 
+  /**
+   * Reseta los valores del formulario al cargar el componente
+   */
   ngOnInit(): void {
     this.formulario.reset({
       email:'',
@@ -29,10 +35,19 @@ export class RegistroComponent implements OnInit {
     })
   }
 
+  /**
+   * Comprueba el estado de los campos del formulario una vez han sido introducido datos o pasado por encima.
+   * @param campo que ha activado el error
+   * @returns  mensaje de error
+   */
   campoEsValido( campo: string ) {
     return this.formulario.controls[campo].errors && this.formulario.controls[campo].touched;
   }
 
+  /**
+   * Envía los datos del formulario y devuelve un token,id y rol del usuario que hemos registrado. Almacena
+   * en el localStorage dichos datos y nos manda a la página listado de coches disponibles
+   */
   guardar(){
 
     const user = this.formulario.value;

@@ -1,5 +1,8 @@
 import { Byte } from "@angular/compiler/src/util";
 
+/**
+ * Respuesta despuer de loguearse o registrarse
+ */
 export interface AuthResponse{
   access_token: string,
   rol:string,
@@ -7,11 +10,17 @@ export interface AuthResponse{
 
 }
 
+/**
+ * Usuario logueado
+ */
 export interface Usuario{
   email:string;
   password:string;
 }
 
+/**
+ * Usuario registrado
+ */
 export interface UsuarioRegister{
     email:string;
     password:string;
@@ -24,6 +33,7 @@ export interface ErrorResponse{
   status: number;
   message: string;
 }
+
 
 export interface Coche{
   id:number,
@@ -54,6 +64,9 @@ export interface Alquiler{
 
 }
 
+/**
+ * Datos que se van a enviar al crear alquiler
+ */
 export interface AlquilerDTO{
   idUser:string,
   coche:number,
@@ -62,7 +75,6 @@ export interface AlquilerDTO{
   accesorios:Accesorio[]
 
 }
-
 
 export interface FileDTO{
   file:string,

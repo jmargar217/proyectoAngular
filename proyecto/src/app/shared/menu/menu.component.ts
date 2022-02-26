@@ -14,19 +14,29 @@ export class MenuComponent implements OnInit {
   constructor(private router:Router,
     private servicioCoche:CochesService) { }
 
+  /**
+   * Comprueba el rol del usuario que se encuentra logueado, de ser admin muestra contenido diferente
+   */
   ngOnInit(): void {
     let rol = localStorage.getItem("rol");
     if(rol=="ADMIN"){
       this.mostrar=true;
     }
-    console.log(this.mostrar);
   }
 
+  /**
+   * Borra del localStorage todos los datos
+   */
   logout(){
     localStorage.clear();
     this.router.navigateByUrl('');
   }
 
+  /**
+   * Lanza una peticion a la API para saber si un coche de una determinada marca se encuentra o no. Devuelve
+   * una alerta dependiendo del resultado (true or false)
+   * @param termino marca de coche buscada
+   */
   buscar(termino:string){
     this.termino=termino;
     this.servicioCoche.getCochesByMarca(this.termino).subscribe(resp=>{

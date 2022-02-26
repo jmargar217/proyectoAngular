@@ -13,6 +13,12 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
 
+  /**
+   * Peticion POST a la api para loguearse, se envia el email y la contraseña
+   * @param email
+   * @param password
+   * @returns observable del tipo AuthResponse que contiene el token,id y rol del usuario
+   */
   login(email:string,password:string){
 
     const url = `${this.baseUrl}/auth/login`;
@@ -26,6 +32,9 @@ export class LoginService {
     return this.http.post<AuthResponse>(url,body,{headers:opcionHeader});
   }
 
+  /**
+   * Obtiene el id del usuario que se encuentra logueado
+   */
   getUsuario(){
     const url = `${this.baseUrl}/user`;
 
@@ -43,6 +52,11 @@ export class LoginService {
       });
   }
 
+  /**
+   * Envia los datos del formulario de registrado
+   * @param usuario
+   * @returns
+   */
   registrar(usuario:UsuarioRegister){
     const url = `${this.baseUrl}/auth/register`;
     const opcionHeader = new HttpHeaders();
@@ -51,6 +65,11 @@ export class LoginService {
 
   }
 
+  /**
+   * Comprueba que el token es válido lanzando una peticion a una URI en la cual sino tiene acceso es que
+   * no es válido el token
+   * @returns
+   */
   validarToken():Observable<AuthResponse>{
     const url = `${ this.baseUrl }/accesorios`;
     const headers = new HttpHeaders()

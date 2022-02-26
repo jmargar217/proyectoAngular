@@ -11,6 +11,11 @@ export class AlquilerService {
 
   constructor(private http:HttpClient) { }
 
+  /**
+   * Peticion GET a la api para obtener la lista de alquileres de un usuario. En la cabecera
+   * pasamos el token del usuario y en como parametro su id, ambos los obtenemos del localSotrage.
+   * @returns observable de tipo lista alquiler
+   */
   getListaAlquiler(){
     let token= localStorage.getItem('token');
     let id = localStorage.getItem('idUser')!;
@@ -25,6 +30,11 @@ export class AlquilerService {
     return this.http.get<Alquiler[]>(url,{headers:headers,params});
   }
 
+  /**
+   * Peticion POST a la api para crear un alquiler apartir de un objeto AlquilerDTO creado en el formulario.
+   * @param alquiler
+   * @returns  observable de tipo alquiler
+   */
   crearAlquiler(alquiler:AlquilerDTO){
     let token  = localStorage.getItem('token');
     const url = `${this.baseUrl}/alquiler`;
@@ -35,6 +45,11 @@ export class AlquilerService {
     return this.http.post<Alquiler>(url,alquiler,{headers:headers});
   }
 
+  /**
+   * Obtiene una lista de accesorios que han sido marcados en la vista
+   * @param accesorios
+   * @returns  accesorios marcados
+   */
   accesoriosMarcados(accesorios:Accesorio[]){
     let aux:Accesorio[] = [];
     for(let i=0; i<accesorios.length;i++){
@@ -45,6 +60,11 @@ export class AlquilerService {
     return aux;
   }
 
+  /**
+   * Peticion DELETE a la api para borrar un alquiler a través de su id que pasamos en el path
+   * @param id
+   * @returns
+   */
   borrarAlquiler(id:number){
     let token= localStorage.getItem('token');
 
@@ -55,6 +75,12 @@ export class AlquilerService {
     return this.http.delete(url,{headers:opcionHeader});
   }
 
+  /**
+   * Calcula el precio de un alquiler con una llamada a la api donde le pasamos el alquilerDTO que hemos creado
+   * con el formulario en la vista.
+   * @param alquiler
+   * @returns precio
+   */
   calcularPrecio(alquiler:AlquilerDTO){
     let token  = localStorage.getItem('token');
     const url = `${this.baseUrl}/calcular-alquiler`;

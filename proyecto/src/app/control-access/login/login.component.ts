@@ -12,12 +12,17 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * Formulario con las validaciones del login
+   */
   formulario:FormGroup=this.fb.group({
     email:! ['',[Validators.required,Validators.email]],
     password:!['',[Validators.required,Validators.minLength(4)]],
   });
 
-
+  /**
+   * Objeto usuario que se a a enviar al servicio
+   */
   usuario: Usuario={
     email:'',
     password:''
@@ -27,6 +32,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Envia los datos validades del formulario en forma de objeto usuario al servicio y de validarse en el
+   * backend devuelve su token,id y rol. Almacenando la respuesta en el localStorage y mandandonos a
+   * la pagina listado de coches disponibles
+   */
   login(){
 
     this.serviceLogin.login(this.usuario.email,this.usuario.password)
