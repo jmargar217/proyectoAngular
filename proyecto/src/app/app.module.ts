@@ -18,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
 import { FicherosModule } from './ficheros/ficheros.module';
 import { AlquilerService } from './services/alquiler.service';
 import { FicheroService } from './services/fichero.service';
+import { RolGuard } from './rol.guard';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { FicheroService } from './services/fichero.service';
     FicherosModule,
 
   ],
-  providers: [AuthGuard, LoginService, CochesService, AlquilerService, FicheroService],
+  providers: [AuthGuard,RolGuard, LoginService, CochesService, AlquilerService, FicheroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

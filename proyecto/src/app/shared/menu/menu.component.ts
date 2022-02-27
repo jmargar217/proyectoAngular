@@ -29,7 +29,9 @@ export class MenuComponent implements OnInit {
    */
   logout(){
     localStorage.clear();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('').then(resp=>{
+      window.location.reload();
+    });
   }
 
   /**

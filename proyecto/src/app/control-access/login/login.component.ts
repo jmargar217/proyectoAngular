@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   /**
    * Formulario con las validaciones del login
    */
@@ -38,15 +37,15 @@ export class LoginComponent implements OnInit {
    * la pagina listado de coches disponibles
    */
   login(){
-
     this.serviceLogin.login(this.usuario.email,this.usuario.password)
     .subscribe({
       next: (resp =>{
         localStorage.setItem('token',resp.access_token);
         localStorage.setItem('idUser',resp.idUser);
         localStorage.setItem('rol',resp.rol);
-        //this.serviceLogin.getUsuario();
-        this.router.navigateByUrl('coches');
+        this.router.navigateByUrl('coches').then(resp=>{
+          window.location.reload();
+        });
       }),
       error: resp =>{
         Swal.fire({
@@ -57,8 +56,5 @@ export class LoginComponent implements OnInit {
         })
       }
     })
-
-
   }
-
 }

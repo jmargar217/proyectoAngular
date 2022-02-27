@@ -27,7 +27,8 @@ export class AlquileresComponent implements OnInit, OnDestroy {
     this.getAlquileres();
     this.dtOptions = {
     pagingType: 'full_numbers',
-    pageLength:5
+    pageLength:5,
+    responsive:true
     }
   }
 

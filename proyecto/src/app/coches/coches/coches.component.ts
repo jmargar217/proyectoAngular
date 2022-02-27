@@ -27,7 +27,8 @@ export class CochesComponent implements OnInit,OnDestroy {
 
     this.dtOptions = {
         pagingType: 'full_numbers',
-        pageLength:5
+        pageLength:5,
+        responsive:true
       };
 
   }
@@ -41,6 +42,7 @@ export class CochesComponent implements OnInit,OnDestroy {
    * Obtiene la lista de coches a través del servicio
    */
   getCoches(){
+
     this.serviceCoches.getCoches().subscribe(resp =>{
       this.coches = resp;
       if(this.coches.length==0){

@@ -57,8 +57,6 @@ export class RegistroComponent implements OnInit {
         localStorage.setItem('token',resp.access_token);
         localStorage.setItem('idUser',resp.idUser);
         localStorage.setItem('rol',resp.rol);
-
-        //this.serviceLogin.getUsuario();
         this.router.navigateByUrl('coches');
       }),
       error: resp =>{
