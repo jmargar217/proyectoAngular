@@ -67,14 +67,25 @@ export class FicheroComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.myForm.get('fileSource')!.value);
 
-    this.fileService.subirArchivo(formData, coche).subscribe(resp=>{
-      Swal.fire({
-        title: "Coche guardado",
-        icon: 'success',
-        confirmButtonText: 'Ok'
+    this.fileService.subirArchivo(formData, coche).subscribe({
+      next: (resp=>{
+        Swal.fire({
+          title: "Coche guardado",
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+        this.router.navigateByUrl('coches');
+      }),
+      error: resp=>{
+        Swal.fire({
+          title: 'Excede el limite de 500 KB',
+          text: 'Indique una imagen válida',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
       })
-      this.router.navigateByUrl('coches');
-    })
+
 
   }
 

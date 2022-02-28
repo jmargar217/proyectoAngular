@@ -13,10 +13,10 @@ export class UbicacionComponent implements OnInit {
    * Formulario con los datos y validaciones para enviar un comentario
    */
   formulario: FormGroup = this.fb.group({
-    email:['', [Validators.email,Validators.required]],
-    nombre:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]],
-    apellidos:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]],
-    comentario:['',[Validators.minLength(10),Validators.maxLength(500)]]
+    email:['', [Validators.email,Validators.required,Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}')]],
+    nombre:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/), Validators.required]],
+    apellidos:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/),Validators.required]],
+    comentario:['',[Validators.minLength(10),Validators.maxLength(500), Validators.required]]
   });
 
 

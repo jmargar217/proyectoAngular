@@ -15,10 +15,10 @@ export class RegistroComponent implements OnInit {
    * Formulario reactivo con las validaciones necesarios para registrar un usuario
    */
   formulario: FormGroup = this.fb.group({
-    email:['', [Validators.email,Validators.required]],
+    email:['', [Validators.email,Validators.required,Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}')]],
     password:['',[Validators.minLength(5),Validators.required]],
-    nombre:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]],
-    apellidos:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/)]]
+    nombre:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/),Validators.required]],
+    apellidos:['',[Validators.pattern(/^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/),Validators.required]]
   });
 
   constructor(private fb: FormBuilder,private serviceLogin:LoginService, private router:Router) { }

@@ -10,7 +10,7 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-dark"><i
                               class="bi bi-person-plus-fill text-white"></i></span>
-                            <input type="email" id="email" name="email" [(ngModel)]="usuario.email" class="form-control" placeholder="Email" required>
+                            <input type="email" id="email" name="email" [(ngModel)]="usuario.email" class="form-control" placeholder="Email" required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}">
                             <span class="input-group "></span>
                             <span class="form-text text-danger" *ngIf="formulario.controls[ 'email']?.errors && formulario.controls[ 'email']?.touched">
                                 Debe introducir un correo electrónico
