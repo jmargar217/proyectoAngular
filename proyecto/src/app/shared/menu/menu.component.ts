@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CochesService } from 'src/app/services/coches.service';
 import Swal from 'sweetalert2';
@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  fecha!:Date;
+  @Input() nombre!:string;
   termino: string='';
   mostrar:boolean=false;
   constructor(private router:Router,
@@ -23,6 +23,10 @@ export class MenuComponent implements OnInit {
     if(rol=="ADMIN"){
       this.mostrar=true;
     }
+  }
+
+  redirige(){
+    this.router.navigateByUrl('');
   }
 
   /**
