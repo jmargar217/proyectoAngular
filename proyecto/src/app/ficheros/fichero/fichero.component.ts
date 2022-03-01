@@ -70,7 +70,7 @@ export class FicheroComponent implements OnInit {
     this.fileService.subirArchivo(formData, coche).subscribe({
       next: (resp=>{
         Swal.fire({
-          title: "Coche guardado",
+          title: "Coche añadido",
           icon: 'success',
           confirmButtonText: 'Ok'
         })

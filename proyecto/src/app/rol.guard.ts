@@ -21,7 +21,7 @@ export class RolGuard implements CanActivate {
     }else{
       this.estado=false;
       Swal.fire({
-        title: 'No tiene permiso de admin',
+        title: 'No tiene permiso de administrador',
         icon: 'error',
         confirmButtonText: 'Ok'
       })

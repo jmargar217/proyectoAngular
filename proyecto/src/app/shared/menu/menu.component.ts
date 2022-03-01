@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  fecha!:Date;
   termino: string='';
   mostrar:boolean=false;
   constructor(private router:Router,
