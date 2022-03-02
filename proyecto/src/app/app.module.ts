@@ -19,6 +19,7 @@ import { FicherosModule } from './ficheros/ficheros.module';
 import { AlquilerService } from './services/alquiler.service';
 import { FicheroService } from './services/fichero.service';
 import { RolGuard } from './rol.guard';
+import { MensajesService } from './services/mensajes.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { RolGuard } from './rol.guard';
     FicherosModule,
 
   ],
-  providers: [AuthGuard,RolGuard, LoginService, CochesService, AlquilerService, FicheroService],
+  providers: [AuthGuard,RolGuard, LoginService, CochesService, AlquilerService, FicheroService, MensajesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

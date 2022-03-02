@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { MensajesService } from '../../services/mensajes.service';
+import { Mensaje } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-ubicacion',
@@ -20,7 +22,8 @@ export class UbicacionComponent implements OnInit {
   });
 
 
-  constructor(private fb: FormBuilder,private router:Router) { }
+  constructor(private fb: FormBuilder,private router:Router,
+    private servicioMensaje:MensajesService) { }
 
   /**
    * Reseta los valores del formulario al cargar el componente
@@ -48,12 +51,29 @@ export class UbicacionComponent implements OnInit {
    * Muestra una alerta al validar y enviar el comentario
    */
   enviar(){
-    Swal.fire({
-      title: 'Su consulta ha sido enviada',
-      text: 'Intentaremos responder lo antes posible',
-      icon: 'success',
-      confirmButtonText: 'Ok'
-    })
+    let mensaje:Mensaje = this.formulario.value;
+    console.log(mensaje);
 
+    this.servicioMensaje.enviarMensaje(mensaje)
+    .subscribe({
+      next: (resp =>{
+        Swal.fire({
+          title: 'Su consulta ha sido enviada',
+          text: 'Intentaremos responder lo antes posible',
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+
+      }),
+      error: resp=>{
+        Swal.fire({
+          title: 'No se puede enviar el mensaje',
+          text: 'Intentelo en otra ocasión',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
+
+    })
   }
 }

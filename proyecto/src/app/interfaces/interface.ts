@@ -95,3 +95,11 @@ export interface userDetails{
   idUser:string,
   rol:string
 }
+
+export interface Mensaje{
+  nombre:string,
+  apellidos:string,
+  email:string,
+  comentario:string
+
+}
