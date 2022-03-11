@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren:() => import('./alquileres/alquileres.module').then(m => m.AlquileresModule)
 
   },
+  {
+    path: 'menu',
+    loadChildren:() => import('./shared/shared.module').then(m => m.SharedModule)
+  },
 
   {
     path: '**',

@@ -20,6 +20,7 @@ import { AlquilerService } from './services/alquiler.service';
 import { FicheroService } from './services/fichero.service';
 import { RolGuard } from './rol.guard';
 import { MensajesService } from './services/mensajes.service';
+import { ValidadorEmailService } from './services/validador-email.service';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { MensajesService } from './services/mensajes.service';
     FicherosModule,
 
   ],
-  providers: [AuthGuard,RolGuard, LoginService, CochesService, AlquilerService, FicheroService, MensajesService],
+  providers: [AuthGuard,RolGuard, LoginService, CochesService, AlquilerService, FicheroService, MensajesService, ValidadorEmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

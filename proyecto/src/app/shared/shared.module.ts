@@ -5,6 +5,7 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { PieComponent } from './pie/pie.component';
 import { FormsModule } from '@angular/forms';
 import {RouterModule} from '@angular/router';
+import { SharedRoutingModule } from './shared-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    SharedRoutingModule
   ]
 })
 

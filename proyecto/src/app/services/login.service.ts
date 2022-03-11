@@ -77,4 +77,14 @@ export class LoginService {
 
     return this.http.get<AuthResponse>( url, { headers } )
   }
+
+  validarRol():Observable<UsuarioRegister>{
+    let token  = localStorage.getItem('token');
+    const url = `${ this.baseUrl }/user`;
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization',`Bearer ${token}`);
+    return this.http.get<UsuarioRegister>(url,{headers:headers});
+  }
 }

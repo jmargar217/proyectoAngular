@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CochesService } from 'src/app/services/coches.service';
 import Swal from 'sweetalert2';
 
@@ -12,17 +12,21 @@ export class MenuComponent implements OnInit {
   @Input() nombre!:string;
   termino: string='';
   mostrar:boolean=false;
+  rol = localStorage.getItem("rol");
   constructor(private router:Router,
-    private servicioCoche:CochesService) { }
+    private servicioCoche:CochesService,
+    private rutaActiva:ActivatedRoute) { }
 
   /**
    * Comprueba el rol del usuario que se encuentra logueado, de ser admin muestra contenido diferente
    */
   ngOnInit(): void {
-    let rol = localStorage.getItem("rol");
-    if(rol=="ADMIN"){
-      this.mostrar=true;
-    }
+    this.rutaActiva.queryParams.subscribe(params=>{
+      this.rol=params['rol'];
+      if(this.rol=="ADMIN"){
+        this.mostrar=true;
+      }
+    })
   }
 
   redirige(){
@@ -34,9 +38,8 @@ export class MenuComponent implements OnInit {
    */
   logout(){
     localStorage.clear();
-    this.router.navigateByUrl('').then(resp=>{
-      window.location.reload();
-    });
+    this.mostrar=false;
+    this.router.navigateByUrl('');
   }
 
   /**
@@ -50,14 +53,12 @@ export class MenuComponent implements OnInit {
       if(resp){
         Swal.fire({
           title: 'Disponemos de esa marca de coche',
-          text: 'Inicie sesión para alquilarlo',
           icon: 'success',
           confirmButtonText: 'Ok'
         })
       }else{
         Swal.fire({
           title: 'No disponemos de esa marca de coche',
-          text: 'Intentelo en otra ocación',
           icon: 'error',
           confirmButtonText: 'Ok'
         })
