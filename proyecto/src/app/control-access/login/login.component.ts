@@ -11,13 +11,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  /**
-   * Formulario con las validaciones del login
-   */
-  formulario:FormGroup=this.fb.group({
-    email:! ['',[Validators.required,Validators.email]],
-    password:!['',[Validators.required,Validators.minLength(4)]],
-  });
 
   /**
    * Objeto usuario que se a a enviar al servicio
@@ -26,7 +19,7 @@ export class LoginComponent implements OnInit {
     email:'',
     password:''
   }
-  constructor(private fb: FormBuilder,private serviceLogin:LoginService, private router: Router, ) { }
+  constructor(private serviceLogin:LoginService, private router: Router, ) { }
 
   ngOnInit(): void {
   }
@@ -43,13 +36,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token',resp.access_token);
         localStorage.setItem('idUser',resp.idUser);
         localStorage.setItem('rol',resp.rol);
-        this.router.navigateByUrl('coches').then(resp=>{
-          window.location.reload();
-        });
+        if(resp.rol=="ADMIN"){
+          this.router.navigate(['/'], {queryParams: {rol: resp.rol}});
+        }else{
+          this.router.navigateByUrl('');
+        }
       }),
-      error: resp =>{
+      error: (err) =>{
         Swal.fire({
-          title: 'Sus datos no son correctos',
+          title: `${err.error.mensaje}`,
           text: 'Vuelva a intentarlo',
           icon: 'error',
           confirmButtonText: 'Ok'

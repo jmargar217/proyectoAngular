@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Accesorio, AlquilerDTO, Coche } from 'src/app/interfaces/interface';
 import { AlquilerService } from 'src/app/services/alquiler.service';
 import { CochesService } from 'src/app/services/coches.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -27,11 +26,6 @@ export class AlquilerComponent implements OnInit {
   //Todos los números de tarjeta Visa comienzan con el número 4.
   //Las tarjetas nuevas tienen 16 dígitos. Las tarjetas viejas tienen 13.
 
-  formulario: FormGroup = this.fb.group({
-    numDias:[, ],
-    fecha:[,],
-    tarjeta:['']
-  });
 
   alquiler={
     numDias:0,
@@ -42,7 +36,6 @@ export class AlquilerComponent implements OnInit {
   mostrar:boolean = false;
   constructor(private rutaActiva: ActivatedRoute,
     private servicioCoche:CochesService,
-    private fb: FormBuilder,
     private servicioAlquiler:AlquilerService,
     private router:Router) { }
 
@@ -51,10 +44,6 @@ export class AlquilerComponent implements OnInit {
    * disponibles del backend
    */
   ngOnInit(): void {
-    this.formulario.reset({
-      numDias:0,
-      tarjeta:'',
-    })
     this.getCoche();
     this.getAccesorios();
   }
@@ -98,8 +87,24 @@ export class AlquilerComponent implements OnInit {
       fecha:this.alquiler.fecha,
       accesorios:accesoriosChecked
     }
-    this.servicioAlquiler.crearAlquiler(alquiler).subscribe(resp=>{
-      this.router.navigateByUrl('listaAlquiler');
+    this.servicioAlquiler.crearAlquiler(alquiler)
+    .subscribe({
+      next: (()=>{
+        Swal.fire({
+          title: "Alquiler creado",
+          icon: 'success',
+          confirmButtonText: 'Ok'
+        })
+        this.router.navigateByUrl('listaAlquiler');
+      }),
+      error: (err)=>{
+        Swal.fire({
+          title: `${err.error.mensaje}`,
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
+
     });
   }
 

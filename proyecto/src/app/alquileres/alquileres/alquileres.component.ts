@@ -28,7 +28,11 @@ export class AlquileresComponent implements OnInit, OnDestroy {
     this.dtOptions = {
     pagingType: 'full_numbers',
     pageLength:5,
-    responsive:true
+    lengthMenu: [5,10,20],
+    responsive:true,
+    language: {
+      url: 'http://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
+    }
     }
   }
 
@@ -54,7 +58,7 @@ export class AlquileresComponent implements OnInit, OnDestroy {
           this.router.navigateByUrl('coches');
 
         }else{
-          this.dtTrigger.next(resp);
+          this.dtTrigger.next(null);
         }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MensajesService } from '../../services/mensajes.service';
 import { Mensaje } from '../../interfaces/interface';
@@ -23,12 +23,19 @@ export class UbicacionComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,private router:Router,
-    private servicioMensaje:MensajesService) { }
+    private servicioMensaje:MensajesService,
+    private route:ActivatedRoute) { }
 
   /**
    * Reseta los valores del formulario al cargar el componente
    */
   ngOnInit(): void {
+
+    this.route.queryParams
+      .subscribe(params=>{
+        console.log(params);
+      })
+
     this.formulario.reset({
       email:'',
       nombre:'',
